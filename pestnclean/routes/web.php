@@ -17,3 +17,11 @@ Route::middleware(['role:customer'])->group(function () {
     Route::get('home', [AuthController::class, 'home'])->name('home');
     // Các route khác dành cho admin
 });
+use App\Http\Controllers\CategoriesController;
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('categories', CategoriesController::class);`
