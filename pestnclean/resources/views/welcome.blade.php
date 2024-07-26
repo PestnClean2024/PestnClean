@@ -170,3 +170,7 @@
         </div>
     </body>
 </html>
+<form action="{{ route('search') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
