@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -24,4 +25,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('categories', CategoriesController::class);`
+Route::resource('categories', CategoriesController::class);
+
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
