@@ -19,7 +19,6 @@ class CheckRole
     {
         try {
             $user = JWTAuth::parseToken()->authenticate();
-
             if ($user->role !== $role) {
                 return redirect('/home')->with('error', 'Bạn không có quyền truy cập vào trang này!');
             }
