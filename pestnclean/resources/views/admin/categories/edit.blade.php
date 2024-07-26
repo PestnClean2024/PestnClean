@@ -42,23 +42,23 @@
             <img width="80px" height="80px" src="{{asset('uploads/categories/'.$category->image)}}">
           </div>
         </div>
-        {{-- <div class="form-group">
-          <label for="category_parent">Thuộc danh mục</label>
-          <select class="form-control" name="category_parent" id="category_parent">
-            <option value="0">---Root---</option>
-            @foreach($categories as $key => $val)
-                <option  {{ $val->id == $category->category_parent ? 'selected' :  '' }} value="{{$val->id}}">
-                  @php
-                    $str = '';
-                    for($i = 0; $i < $val->level; $i++) {
-                      $str .= '-- ';
-                    }
-                  @endphp
-                  {{ $str . $val->title }}
-                </option>
-            @endforeach 
-          </select>
-        </div> --}}
+        <div class="form-group">
+            <label for="category_parent">Thuộc danh mục</label>
+            <select class="form-control" name="category_parent" id="category_parent">
+              <option value="0" {{ $category->category_parent == 0 ? 'selected' : '' }}>---Root---</option>
+              @foreach($categories as $cat)
+                  <option value="{{ $cat->id }}" {{ $cat->id == $category->category_parent ? 'selected' : '' }}>
+                    @if($cat->level > 1)
+                      @for ($i = 1; $i < $cat->level; $i++)
+                        -- 
+                      @endfor
+                    @endif
+                    {{ $cat->title }}
+                  </option>
+              @endforeach 
+            </select>
+          </div>
+          
         <div class="form-check">
           <input type="checkbox" value="1" {{$category->status ==1 ? 'checked' : '' }} class="form-check-input" name="status" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>

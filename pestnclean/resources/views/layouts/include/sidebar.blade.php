@@ -78,29 +78,55 @@
               </li>
             </ul>
           </li>
-          {{-- <li class="nav-item" {{Request::segment(1)=='tours' ? 'menu-is-opening menu-open' : '' }}>
-            <a href="{{route('tours.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-earth-americas"></i>
+          <li class="nav-item" >
+            <a href="{{route('products.index')}}" class="nav-link">
+                {{-- {{route('categories.index')}} --}}
+              <i class="nav-icon fas fa-folder"></i>
               <p>
-                Tours
+                Quản lý sản phẩm
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('tours.create')}}" class="nav-link">
+                <a href="{{route('products.create')}}" class="nav-link">
+                    {{-- {{route('categories.create')}} --}}
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Tour</p>
+                  <p>Thêm sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('tours.index')}}" class="nav-link">
+                <a href="{{route('products.index')}}" class="nav-link">
+                    {{-- {{route('categories.index')}} --}}
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Tours</p>
+                  <p>Danh sách sản phẩm</p>
                 </a>
               </li>
             </ul>
-          </li> --}}
+          </li>
+          <li class="nav-item" >
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-earth-americas"></i>
+              <p>
+                Quản lý bài viết
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm bài viết</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách bài viết</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

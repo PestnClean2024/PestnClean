@@ -58,7 +58,7 @@
             @foreach($categories as $key => $val)
                 <option value="{{ $val->id }}">
                   @php
-                    $str = '';
+                    $str = ' ';
                     for($i = 0; $i < $val->level; $i++) {
                       $str .= '-- ';
                     }
@@ -68,7 +68,22 @@
             @endforeach 
           </select>
         </div> --}}
-        
+        <div class="form-group">
+            <label for="category_parent">Thuộc danh mục</label>
+            <select class="form-control" name="category_parent" id="category_parent">
+              <option value="0">---Root---</option>
+              @foreach($categories as $category)
+                  <option value="{{ $category->id }}">
+                    @if($category->level > 1)
+                      @for ($i = 1; $i < $category->level; $i++)
+                        -- 
+                      @endfor
+                    @endif
+                    {{ $category->title }}
+                  </option>
+              @endforeach 
+            </select>
+          </div>
         <div class="form-check">
           <input type="checkbox" value="1" class="form-check-input" name="status" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>

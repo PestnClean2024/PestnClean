@@ -9,20 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::create('categories', function (Blueprint $table) {
-        $table->id();
-        $table->string('title')->unique();
-        $table->text('description')->nullable();
-        $table->string('image')->nullable();
-        $table->boolean('status')->default(0);
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->unique();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(0);
+            $table->timestamps();
+        });
+    }
 
-public function down()
-{
-    Schema::dropIfExists('categories');
-}
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('categories');
+    }
 };
