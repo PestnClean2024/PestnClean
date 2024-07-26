@@ -6,7 +6,7 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CartController;
 
 Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
@@ -44,3 +44,5 @@ Route::resource('products', ProductController::class);
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.details');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/addtocart', [CartController::class, 'store'])->name('cart.store');
