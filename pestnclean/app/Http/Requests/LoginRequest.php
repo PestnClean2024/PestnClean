@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'login_id.required' => 'Vui lòng nhập email hoặc sdt.',
-            'password.string' => 'Vui lòng nhập password.',
+            'password.required' => 'Vui lòng nhập password.',
         ];
     }
 }

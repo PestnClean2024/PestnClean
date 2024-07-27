@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Product Details</title>
@@ -9,6 +10,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Product Details</h1>
 
@@ -27,18 +29,19 @@
                 <label for="size">Size:</label>
                 <select name="size" id="size" class="form-control" onchange="updateQuantity()">
                     @foreach ($sizes as $sizes)
-                        <option value="{{ $sizes->size }}" data-quantity="{{ $sizes->quantity }}">{{ $sizes->size }}</option>
+                        <option value="{{ $sizes->size }}" data-quantity="{{ $sizes->quantity }}">{{ $sizes->size }}
+                        </option>
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group hidden" id="quantity-group">
                 <label for="quantity">Quantity (available: <span id="available-quantity"></span>):</label>
-                <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" onchange="validateQuantity()">
+                <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1"
+                    onchange="validateQuantity()">
             </div>
-
             @if (Route::has('login'))
-            @auth
+                @auth
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <button type="submit" id="add-to-cart-button" class="btn btn-primary" disabled>Add to Cart</button>
                 @else
@@ -55,7 +58,8 @@
     @if ($productImg->isNotEmpty())
         <div>
             @foreach ($productImg as $image)
-                <img src="{{ asset('uploads/products/' . $image->image_path) }}" alt="Product Image" style="width:200px;height:auto;">
+                <img src="{{ asset('uploads/products/' . $image->image_path) }}" alt="Product Image"
+                    style="width:200px;height:auto;">
             @endforeach
         </div>
     @else
@@ -99,4 +103,5 @@
         });
     </script>
 </body>
+
 </html>

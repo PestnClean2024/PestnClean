@@ -15,16 +15,20 @@ class CheckRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, $role): Response
     {
-        try {
-            $user = JWTAuth::parseToken()->authenticate();
-            if ($user->role !== $role) {
-                return redirect('/home')->with('error', 'Bạn không có quyền truy cập vào trang này!');
-            }
-        } catch (\Exception $e) {
+        // Kiểm tra nếu người dùng đã đăng nhập
+        if (!session('user')) {
             return redirect('/login');
         }
+
+        $user = session('user');
+
+        // Kiểm tra quyền truy cập của người dùng
+        if (isset($user->role) && $user->role !== $role) {
+            return redirect('/home')->with('error', 'Bạn không có quyền truy cập vào trang này!');
+        }
+
         return $next($request);
     }
 }
