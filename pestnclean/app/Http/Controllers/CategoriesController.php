@@ -22,10 +22,10 @@ class CategoriesController extends Controller
     public function create()
     {
         // $categories = Category::orderBy('id', 'DESC')->get();
-        $categories = $this->getCategoriesProduct();
+        $categories = $this->getCategories();
         return view('admin.categories.create', compact('categories'));
     }
-    public function getCategoriesProduct()
+    public function getCategories()
     {
         $categories = Category::orderBy('id', 'DESC')->get();
         $listCategory = [];
@@ -37,35 +37,41 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        // Xác thực dữ liệu đầu vào
         $data = $request->validate([
             'title' => 'required|unique:categories|max:255',
             'description' => 'required',
             'status' => 'required',
             'category_parent' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ],[
             'title.required' => 'Yêu cầu nhập tiêu đề',
             'description.required' => 'Yêu cầu nhập mô tả',
             'status.required' => 'Yêu cầu check status',
         ]);
 
+        // Tạo mới danh mục
         $category = new Category();
         $category->title = $data['title'];
-        $category->description = $data['description']; 
-        $category->status = $data['status']; 
-        $category->category_parent = $data['category_parent']; 
+        $category->description = $data['description'];
+        $category->status = $data['status'];
+        $category->category_parent = $data['category_parent'];
 
-        $get_image = $request->image;
-        $path = 'uploads/categories/';
-        $get_name_image = $get_image->getClientOriginalName();
-        $name_image = current(explode('.', $get_name_image));
-        $new_image = $name_image.rand(0,999).'.'.$get_image->getClientOriginalExtension();
-        $get_image->move($path, $new_image);
-        $data['image'] = $new_image;
+        // Xử lý upload hình ảnh nếu có
+        if ($request->hasFile('image')) {
+            $get_image = $request->file('image');
+            $path = 'uploads/categories/';
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = pathinfo($get_name_image, PATHINFO_FILENAME);
+            $new_image = $name_image . '_' . time() . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move(public_path($path), $new_image);
+            $category->image = $new_image;
+        }
 
-        $category->image = $new_image;
+        // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
-        
-        return redirect()->back();
+
+        return redirect()->route('categories.index')->with('success', 'Danh mục đã được thêm thành công.');
     }
 
     /**
@@ -81,7 +87,7 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        $categories = $this->getCategoriesProduct();
+        $categories = $this->getCategories();
         $category = Category::find($id);
         return view('admin.categories.edit', compact('category', 'categories'));
     }
@@ -135,6 +141,17 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        // Xóa hình ảnh liên quan (nếu cần)
+        $imagePath = public_path('uploads/categories/' . $category->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Danh mục đã được xóa thành công.');
+    
     }
 }

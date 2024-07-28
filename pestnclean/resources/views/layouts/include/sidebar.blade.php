@@ -55,7 +55,7 @@
           <li class="nav-item" >
             <a href="{{route('categories.create')}}" class="nav-link">
                 {{-- {{route('categories.index')}} --}}
-              <i class="nav-icon fas fa-folder"></i>
+              <i class="nav-icon fas fa-gear"></i>
               <p>
                 Quản lý dịch vụ
                 <i class="right fas fa-angle-left"></i>
@@ -99,14 +99,37 @@
                 <a href="{{route('products.index')}}" class="nav-link">
                     {{-- {{route('categories.index')}} --}}
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách sản phẩm</p>
+                  <p>Liệt kê sản phẩm</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item" >
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-earth-americas"></i>
+            <a href="{{route('categoriesArticles.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-folder-plus"></i>
+              <p>
+                Danh mục bài viết
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('categoriesArticles.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm danh mục </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('categoriesArticles.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Liệt kê danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" >
+            <a href="{{route('articles.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Quản lý bài viết
                 <i class="right fas fa-angle-left"></i>
@@ -114,15 +137,32 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('articles.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm bài viết</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('articles.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách bài viết</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" >
+            <a href="{{route('customers.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý khách hàng
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('customers.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách khách hàng</p>
                 </a>
               </li>
             </ul>
