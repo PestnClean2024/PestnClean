@@ -38,37 +38,30 @@ class AuthController extends Controller
         ]);
 
         if ($user) {
-            return redirect()->route('home')->with('user', $user);
+            // Lưu thông tin người dùng vào session
+            session(['user' => $user]);
+            return redirect()->route('home');
         }
         return redirect()->back()->withErrors(['error' => 'Đăng ký không thành công']);
     }
 
     public function redirectToRolePage($user)
     {
-        
         switch ($user->role) {
             case 'customer':
                 return redirect()->route('home');
             case 'superadmin':
                 // Ghi lại hoạt động
                 AccessLogger::log('Supser đã đăng nhập');
-                dd(11);
-                return;
-                // return redirect()->route('superadmin')->with('user', $user);
+                return redirect()->route('dashboard');
             case 'admin':
                 AccessLogger::log("Admin đã đăng nhập");
-                dd(12);
-                return;
-
-                // return redirect()->route('admin')->with('user', $user);
+                return redirect()->route('dashboard');
             case 'executive':
                 AccessLogger::log("Excutive đã đăng nhập");
-                dd(13);
-                return;
-
-                // return redirect()->route('executive')->with('user', $user);
+                return redirect()->route('dashboard');
             default:
-                return dd('false');
+                return redirect()->back();
         }
     }
 
@@ -84,7 +77,6 @@ class AuthController extends Controller
 
         // Lưu thông tin người dùng vào session
         session(['user' => $user]);
-
         return $this->redirectToRolePage($user);
     }
 
