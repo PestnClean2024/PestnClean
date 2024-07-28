@@ -29,20 +29,23 @@
                 <label for="size">Size:</label>
                 <select name="size" id="size" class="form-control" onchange="updateQuantity()">
                     @foreach ($sizes as $sizes)
-                        <option value="{{ $sizes->size }}" data-quantity="{{ $sizes->quantity }}">{{ $sizes->size }}
-                        </option>
+                    <option value="{{ $sizes->size }}" data-quantity="{{ $sizes->quantity }}">{{ $sizes->size }}
+                    </option>
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group hidden" id="quantity-group">
+                @if (session('error'))
+                    <div>{{ session('error') }}</div>
+                @endif
                 <label for="quantity">Quantity (available: <span id="available-quantity"></span>):</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1"
                     onchange="validateQuantity()">
             </div>
             @if (Route::has('login'))
                 @auth
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="user_id" value="{{ session('user')->id }}">
                     <button type="submit" id="add-to-cart-button" class="btn btn-primary" disabled>Add to Cart</button>
                 @else
                     <p>Đăng nhập hoặc đăng kí để thêm sản phẩm vào giỏ hàng</p>
