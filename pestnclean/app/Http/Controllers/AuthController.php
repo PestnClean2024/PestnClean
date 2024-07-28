@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Utils\AccessLogger;
 use App\Utils\JwtHelper;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -24,10 +25,6 @@ class AuthController extends Controller
     {
         return view('login');
     }
-    public function home()
-    {
-        return view('home');
-    }
     public function register(RegisterRequest $request)
     {
 
@@ -41,39 +38,48 @@ class AuthController extends Controller
         ]);
 
         if ($user) {
-            $token = JWTAuth::fromUser($user);
-            $cookie = cookie('token', $token, 60); // 60 minutes
-            return redirect()->route('home')->withCookie($cookie)->with('user', $user);
+            // Lưu thông tin người dùng vào session
+            session(['user' => $user]);
+            return redirect()->route('home');
         }
         return redirect()->back()->withErrors(['error' => 'Đăng ký không thành công']);
     }
 
+    public function redirectToRolePage($user)
+    {
+        switch ($user->role) {
+            case 'customer':
+                return redirect()->route('home');
+            case 'superadmin':
+                // Ghi lại hoạt động
+                AccessLogger::log('Supser đã đăng nhập');
+                return redirect()->route('dashboard');
+            case 'admin':
+                AccessLogger::log("Admin đã đăng nhập");
+                return redirect()->route('dashboard');
+            case 'executive':
+                AccessLogger::log("Excutive đã đăng nhập");
+                return redirect()->route('dashboard');
+            default:
+                return redirect()->back();
+        }
+    }
+
     public function login(LoginRequest $request)
     {
-
         $credentials = $this->credentials($request);
 
-        try {
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return redirect()->back()->withErrors(['error' => 'Tài khoản của bạn không đúng'])->withInput();
-            }
-        } catch (JWTException $e) {
-            return redirect()->back()->withErrors(['error' => 'Không thể tạo token'])->withInput();
+        if (!Auth::attempt($credentials)) {
+            return redirect()->back()->withErrors(['error' => 'Tài khoản của bạn không đúng'])->withInput();
         }
 
         $user = auth()->user();
 
-        $token = JwtHelper::generateToken(Auth::user());
-
-        $cookie = cookie('token', $token, 60); // 60 minutes
-
-        if ($user->role == 'customer') {
-            return redirect()->route('home')->withCookie($cookie)->with('user', $user);
-        } else {
-            dd('yes');
-            return redirect()->route('dashboard')->withCookie($cookie)->with('user', $user);
-        }
+        // Lưu thông tin người dùng vào session
+        session(['user' => $user]);
+        return $this->redirectToRolePage($user);
     }
+
     protected function credentials(Request $request)
     {
         $field = filter_var($request->input('login_id'), FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
@@ -85,12 +91,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $token = $request->cookie('token');
-
-        JwtHelper::invalidateToken($token);
-
-        $cookie = Cookie::forget('token');
-
-        return redirect()->route('login')->withCookie($cookie);
+        Auth::logout();
+        $request->session()->flush();
+        return redirect()->route('login');
     }
 }

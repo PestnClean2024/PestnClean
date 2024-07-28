@@ -13,7 +13,7 @@ class Category extends Model
         if(count($categories) > 0){
             foreach($categories as $key => $value){
                 if($value->category_parent == $parents){
-                    $value ->level = $level;
+                    $value ->level = $level;    
 
                     $listCategory[] = $value;
                     unset($categories[$key]);
