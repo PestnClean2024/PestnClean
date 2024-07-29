@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\ProductImage;
+
 class ProductController extends Controller
 {
     public function index()
@@ -19,7 +21,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = $this->getCategoriesProduct();
-        
+
         return view('admin.products.create', compact('categories'));
     }
     public function getCategoriesProduct()
@@ -89,19 +91,22 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã thêm sản phẩm thành công");
         return redirect()->route('products.index');
     }
 
 
-    public function edit( string $id)
+    public function edit(string $id)
     {
         $product = Product::findOrFail($id);
         $categories = $this->getCategoriesProduct(); // Hoặc lọc danh mục theo nhu cầu
-    $sizes = Size::where('product_id', $id)->get();
-    $productImages = ProductImage::where('product_id', $id)->get();
-    $categories = $this->getCategoriesProduct();
-    return view('admin.products.edit', compact('product', 'categories', 'sizes', 'productImages'));
+        $sizes = Size::where('product_id', $id)->get();
+        $productImages = ProductImage::where('product_id', $id)->get();
+        $categories = $this->getCategoriesProduct();
+        return view('admin.products.edit', compact('product', 'categories', 'sizes', 'productImages'));
     }
 
     public function update(Request $request, $id)
@@ -173,6 +178,10 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã sửa sản phẩm {$product->id} thành công");
 
         return redirect()->route('products.index');
     }
@@ -206,7 +215,10 @@ class ProductController extends Controller
         // Delete the product
         $product->delete();
 
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
-
 }

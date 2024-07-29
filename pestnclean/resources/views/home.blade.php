@@ -6,17 +6,16 @@
 </head>
 
 <body>
+    <h1>Trang chủ</h1>
     @if (session('user'))
-    {{-- {{dd(session('user'))}} --}}
+        {{-- {{dd(session('user'))}} --}}
         <p>Xin chào, {{ session('user')->fullname }}!</p>
         <p>Vai trò: {{ session('user')->role }}</p>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     @endif
-    {{-- <h1>Welcome, {{ session('user')->fullname ?? '' }}</h1> --}}
-    {{-- {{dd(session('user'))}} --}}
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
 </body>
 
 </html>
