@@ -4,7 +4,7 @@
 
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Danh sách danh</h3>
+      <h3 class="card-title">Danh mục bài viết</h3>
     </div>
 
     {{-- Thông báo lỗi --}}
@@ -34,25 +34,25 @@
           </tr>
         </thead>
         <tbody>
-            @foreach($categories as $key => $cate)
+            @foreach($article as $key => $art)
                 <tr>
                     <th scope="row">{{$key}}</th>
-                    <td>{{$cate->title}}</td>
-                    <td><img width="80px" height="80px" src="{{asset('uploads/categories/'.$cate->image)}}"></td>
-                    <td>{{$cate->description}}</td>
+                    <td>{{$art->title}}</td>
+                    <td><img width="80px" height="80px" src="{{asset('uploads/articles/'.$art->image)}}"></td>
+                    <td>{{$art->description}}</td>
                     
-                    <td>{{$cate->created_at}}</td>
-                    <td>{{$cate->updated_at}}</td>
+                    <td>{{$art->created_at}}</td>
+                    <td>{{$art->updated_at}}</td>
                     <td>
-                        @if($cate->status==1)
+                        @if($art->status==1)
                             <span class="text text-success">Active</span>
                         @else
                             <span class="text text-error">UnActive</span>
                         @endif
                     </td>
                     <td>
-                        <a  width="68.81px" class="btn btn-warning" href="{{route('categories.edit',[$cate->id])}}">Sửa</a>
-                        <form onsubmit="return confirm('You definitely want to delete?');" action="{{route('categories.destroy',[$cate->id])}}" method="POST">
+                        <a  width="68.81px" class="btn btn-warning" href="{{route('articles.edit',[$art->id])}}">Sửa</a>
+                        <form onsubmit="return confirm('You definitely want to delete?');" action="{{route('articles.destroy',[$art->id])}}" method="POST">
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger" type="submit" value="Xóa">

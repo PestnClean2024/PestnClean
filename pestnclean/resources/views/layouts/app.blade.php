@@ -89,13 +89,13 @@
                                         class="img-size-50 mr-3 img-circle">
                                     <div class="media-body">
                                         <h3 class="dropdown-item-title">
-                                            {{$log->user->fullname}}
+                                            {{ $log->user->fullname }}
                                             <span class="float-right text-sm text-danger"><i
                                                     class="fas fa-star"></i></span>
                                         </h3>
-                                        <p class="text-sm">{{$log->activity}}</p>
+                                        <p class="text-sm">{{ $log->activity }}</p>
                                         <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>
-                                          {{ \Carbon\Carbon::now()->diffForHumans(\Carbon\Carbon::parse($log->access_at), true) }}
+                                            {{ \Carbon\Carbon::now()->diffForHumans(\Carbon\Carbon::parse($log->access_at), true) }}
                                         </p>
                                     </div>
                                 </div>
@@ -140,9 +140,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
+                    <a class="nav-link" data-widget="logout" data-slide="true" href="#" role="button">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </button>
+                        </form>
                     </a>
                 </li>
             </ul>
@@ -195,6 +199,23 @@
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 
+    <<<<<<< HEAD <script>
+        $(function() {
+            $("#departure_date").datepicker();
+            $("#return_date").datepicker();
+        });
+    </script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    {{-- <script>
+      CKEDITOR.replace( 'description' );
+      CKEDITOR.replace( 'content' );
+  </script> --}}
+    =======
     <script>
         $(function() {
             $("#departure_date").datepicker();
@@ -211,6 +232,7 @@
         CKEDITOR.replace('description');
         CKEDITOR.replace('content');
     </script>
+    >>>>>>> 0d4d1ea94d34ae96455373d3b1376e019d7015bc
 </body>
 
 </html>

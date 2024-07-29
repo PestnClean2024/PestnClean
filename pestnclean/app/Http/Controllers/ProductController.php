@@ -21,7 +21,6 @@ class ProductController extends Controller
     public function create()
     {
         $categories = $this->getCategoriesProduct();
-
         return view('admin.products.create', compact('categories'));
     }
     public function getCategoriesProduct()

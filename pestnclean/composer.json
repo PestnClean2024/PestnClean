@@ -7,7 +7,12 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
+<<<<<<< HEAD
+        "laravel/tinker": "^2.9",
+        "tymon/jwt-auth": "*"
+=======
         "laravel/tinker": "^2.9"
+>>>>>>> 0d4d1ea94d34ae96455373d3b1376e019d7015bc
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

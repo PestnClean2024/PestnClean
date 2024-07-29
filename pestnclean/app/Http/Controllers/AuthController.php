@@ -59,7 +59,7 @@ class AuthController extends Controller
                 return redirect()->route('dashboard');
             case 'executive':
                 AccessLogger::log("Excutive đã đăng nhập");
-                return redirect()->route('dashboard');
+                return redirect()->route('categoriesArticles.index');
             default:
                 return redirect()->back();
         }

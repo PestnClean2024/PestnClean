@@ -23,10 +23,10 @@ class CategoriesController extends Controller
     public function create()
     {
         // $categories = Category::orderBy('id', 'DESC')->get();
-        $categories = $this->getCategoriesProduct();
+        $categories = $this->getCategories();
         return view('admin.categories.create', compact('categories'));
     }
-    public function getCategoriesProduct()
+    public function getCategories()
     {
         $categories = Category::orderBy('id', 'DESC')->get();
         $listCategory = [];
@@ -38,6 +38,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        // Xác thực dữ liệu đầu vào
         $data = $request->validate([
             'title' => 'required|unique:categories|max:255',
             'description' => 'required',
@@ -49,6 +50,7 @@ class CategoriesController extends Controller
             'status.required' => 'Yêu cầu check status',
         ]);
 
+        // Tạo mới danh mục
         $category = new Category();
         $category->title = $data['title'];
         $category->description = $data['description'];
@@ -63,7 +65,7 @@ class CategoriesController extends Controller
         $get_image->move($path, $new_image);
         $data['image'] = $new_image;
 
-        $category->image = $new_image;
+        // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
         //Log thông báo hành động
         $user = auth()->user()->fullname;
@@ -85,7 +87,7 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        $categories = $this->getCategoriesProduct();
+        $categories = $this->getCategories();
         $category = Category::find($id);
         return view('admin.categories.edit', compact('category', 'categories'));
     }
@@ -143,6 +145,17 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        // Xóa hình ảnh liên quan (nếu cần)
+        $imagePath = public_path('uploads/categories/' . $category->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Danh mục đã được xóa thành công.');
+    
     }
 }

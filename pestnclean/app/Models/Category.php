@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    
     public static function recursive($categories, $parents=0, $level=1, &$listCategory){
         if(count($categories) > 0){
             foreach($categories as $key => $value){
