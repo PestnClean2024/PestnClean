@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ServiceCleaningController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('client.home');
+        return view('client.serviceCleaning');
     }
 
     /**
@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**

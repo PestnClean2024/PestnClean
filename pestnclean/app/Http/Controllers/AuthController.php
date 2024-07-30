@@ -16,15 +16,15 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function showRegisterForm()
-    {
-        return view('register');
-    }
+    // public function showRegisterForm()
+    // {
+    //     return view('register');
+    // }
 
-    public function showLoginForm()
-    {
-        return view('login');
-    }
+    // public function showLoginForm()
+    // {
+    //     return view('login');
+    // }
     public function register(RegisterRequest $request)
     {
 
@@ -40,29 +40,45 @@ class AuthController extends Controller
         if ($user) {
             // Lưu thông tin người dùng vào session
             session(['user' => $user]);
-            return redirect()->route('home');
+            return response()->json([
+                'success' => true,
+                'redirect' => route('home') // Đường dẫn đến trang sau khi đăng ký thành công
+            ]);
         }
-        return redirect()->back()->withErrors(['error' => 'Đăng ký không thành công']);
+        return response()->json([
+            'errors' => ['registration' => ['Đăng ký thất bại, vui lòng thử lại.']]
+        ], 422);
     }
 
     public function redirectToRolePage($user)
     {
+        $redirectUrl = '';
         switch ($user->role) {
             case 'customer':
-                return redirect()->route('home');
+                $redirectUrl = route('home');
+                break;
             case 'superadmin':
                 // Ghi lại hoạt động
                 AccessLogger::log('Supser đã đăng nhập');
-                return redirect()->route('dashboard');
+                $redirectUrl = route('dashboard');
+                break;
             case 'admin':
                 AccessLogger::log("Admin đã đăng nhập");
-                return redirect()->route('dashboard');
+                $redirectUrl = route('dashboard');
+                break;
             case 'executive':
                 AccessLogger::log("Excutive đã đăng nhập");
-                return redirect()->route('categoriesArticles.index');
+                $redirectUrl = route('categoriesArticles.index');
+                break;
             default:
-                return redirect()->back();
+                // Redirect đến trang trước đó hoặc trang lỗi
+                // $redirectUrl = url()->previous();
+                break;
         }
+        return response()->json([
+            'success' => true,
+            'redirect' => $redirectUrl
+        ]);
     }
 
     public function login(LoginRequest $request)
@@ -70,7 +86,11 @@ class AuthController extends Controller
         $credentials = $this->credentials($request);
 
         if (!Auth::attempt($credentials)) {
-            return redirect()->back()->withErrors(['error' => 'Tài khoản của bạn không đúng'])->withInput();
+            return response()->json([
+                'errors' => [
+                    'login_id' => ['Tài khoản hoặc mật khẩu của bạn không đúng.']
+                ]
+            ], 422);
         }
 
         $user = auth()->user();
@@ -93,6 +113,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         $request->session()->flush();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
