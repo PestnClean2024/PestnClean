@@ -21,6 +21,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.details');
+Route::post('/feedback', [ShopController::class, 'storeFeedback'])->name('feedback.store');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
