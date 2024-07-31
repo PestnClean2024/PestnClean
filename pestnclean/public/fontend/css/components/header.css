@@ -1,0 +1,47 @@
+.navbar-background-color {
+    background: var(--Color, #FFF);
+}
+
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo-company-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-nav .nav-item a {
+    color: var(--Neutral-500, #868E96);
+
+    /* Title/Title Medium 2 */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0px 10px;
+    /* 27px */
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--Blue-500, #005CA9);
+
+    /* Title/Title Medium 2 */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 27px */
+}
+
+.navbar-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}

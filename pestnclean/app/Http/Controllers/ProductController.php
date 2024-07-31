@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\ProductImage;
+<<<<<<< HEAD
 use App\Utils\AccessLogger;
+=======
+
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
 class ProductController extends Controller
 {
     public function index()
@@ -89,21 +94,28 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
+<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo sản phẩm {$product->id} thành công");
+=======
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã thêm sản phẩm thành công");
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         return redirect()->route('products.index');
     }
 
 
-    public function edit( string $id)
+    public function edit(string $id)
     {
         $product = Product::findOrFail($id);
         $categories = $this->getCategoriesProduct(); // Hoặc lọc danh mục theo nhu cầu
-    $sizes = Size::where('product_id', $id)->get();
-    $productImages = ProductImage::where('product_id', $id)->get();
-    $categories = $this->getCategoriesProduct();
-    return view('admin.products.edit', compact('product', 'categories', 'sizes', 'productImages'));
+        $sizes = Size::where('product_id', $id)->get();
+        $productImages = ProductImage::where('product_id', $id)->get();
+        $categories = $this->getCategoriesProduct();
+        return view('admin.products.edit', compact('product', 'categories', 'sizes', 'productImages'));
     }
 
     public function update(Request $request, $id)
@@ -175,9 +187,17 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
+<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã cập nhật sản phẩm {$product->id} thành công");
+=======
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã sửa sản phẩm {$product->id} thành công");
+
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         return redirect()->route('products.index');
     }
 
@@ -209,10 +229,14 @@ class ProductController extends Controller
 
         // Delete the product
         $product->delete();
+<<<<<<< HEAD
+=======
+
+        //Log thông báo hành động
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
-
 }

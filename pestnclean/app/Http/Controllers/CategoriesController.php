@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Utils\AccessLogger;
@@ -43,8 +44,7 @@ class CategoriesController extends Controller
             'description' => 'required',
             'status' => 'required',
             'category_parent' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ],[
+        ], [
             'title.required' => 'Yêu cầu nhập tiêu đề',
             'description.required' => 'Yêu cầu nhập mô tả',
             'status.required' => 'Yêu cầu check status',
@@ -57,23 +57,28 @@ class CategoriesController extends Controller
         $category->status = $data['status'];
         $category->category_parent = $data['category_parent'];
 
-        // Xử lý upload hình ảnh nếu có
-        if ($request->hasFile('image')) {
-            $get_image = $request->file('image');
-            $path = 'uploads/categories/';
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = pathinfo($get_name_image, PATHINFO_FILENAME);
-            $new_image = $name_image . '_' . time() . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move(public_path($path), $new_image);
-            $category->image = $new_image;
-        }
+        $get_image = $request->image;
+        $path = 'uploads/categories/';
+        $get_name_image = $get_image->getClientOriginalName();
+        $name_image = current(explode('.', $get_name_image));
+        $new_image = $name_image . rand(0, 999) . '.' . $get_image->getClientOriginalExtension();
+        $get_image->move($path, $new_image);
+        $data['image'] = $new_image;
 
         // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
+<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo dịch vụ {$category->id} thành công");
         return redirect()->route('categories.index');
+=======
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã thêm danh mục thành công");
+        return redirect()->back();
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
     }
 
     /**
@@ -98,39 +103,49 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    // Tìm danh mục theo ID
-    $category = Category::find($id);
+    {
+        // Tìm danh mục theo ID
+        $category = Category::find($id);
 
-    // Xác thực dữ liệu đầu vào
-    $data = $request->validate([
-        'title' => 'required|max:255|unique:categories,title,' . $category->id,
-        'description' => 'required',
-        'status' => 'required',
-        'category_parent' => 'required',
-    ],[
-        'title.required' => 'Yêu cầu nhập tiêu đề',
-        'description.required' => 'Yêu cầu nhập mô tả',
-        'status.required' => 'Yêu cầu check status',
-    ]);
+        // Xác thực dữ liệu đầu vào
+        $data = $request->validate([
+            'title' => 'required|max:255|unique:categories,title,' . $category->id,
+            'description' => 'required',
+            'status' => 'required',
+            'category_parent' => 'required',
+        ], [
+            'title.required' => 'Yêu cầu nhập tiêu đề',
+            'description.required' => 'Yêu cầu nhập mô tả',
+            'status.required' => 'Yêu cầu check status',
+        ]);
 
-    // Cập nhật thông tin danh mục
-    $category->title = $data['title'];
-    $category->description = $data['description'];
-    $category->status = $data['status'];
-    $category->category_parent = $data['category_parent']; // Cập nhật danh mục cha mới
+        // Cập nhật thông tin danh mục
+        $category->title = $data['title'];
+        $category->description = $data['description'];
+        $category->status = $data['status'];
+        $category->category_parent = $data['category_parent']; // Cập nhật danh mục cha mới
 
-    // Cập nhật hình ảnh nếu có
-    if ($request->hasFile('image')) {
-        $get_image = $request->file('image');
-        $path = 'uploads/categories/';
-        $get_name_image = $get_image->getClientOriginalName();
-        $name_image = pathinfo($get_name_image, PATHINFO_FILENAME);
-        $new_image = $name_image . rand(0, 999) . '.' . $get_image->getClientOriginalExtension();
-        $get_image->move($path, $new_image);
-        $category->image = $new_image;
+        // Cập nhật hình ảnh nếu có
+        if ($request->hasFile('image')) {
+            $get_image = $request->file('image');
+            $path = 'uploads/categories/';
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = pathinfo($get_name_image, PATHINFO_FILENAME);
+            $new_image = $name_image . rand(0, 999) . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move($path, $new_image);
+            $category->image = $new_image;
+        }
+
+        // Lưu các thay đổi
+        $category->save();
+        //Log thông báo hành động
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã sửa danh mục {$category->id} thành công");
+        return redirect()->route('categories.index');
     }
 
+<<<<<<< HEAD
     // Lưu các thay đổi
     $category->save();
     $user = auth()->user()->fullname;
@@ -139,6 +154,8 @@ class CategoriesController extends Controller
     return redirect()->route('categories.index');
 }
 
+=======
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
 
 
     /**

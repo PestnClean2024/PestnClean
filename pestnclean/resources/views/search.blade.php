@@ -6,7 +6,7 @@
     {{-- kết quả tìm kiếm --}}
     <div id="ketquatim">
         <div class="list-group">
-            @if ($listsp->isEmpty())
+            @if (empty($listsp))
                 <h1>Không tìm thấy sản phẩm nào</h1>
             @else
                 @foreach ($listsp as $sp)
@@ -23,7 +23,7 @@
 
         {{-- phần phân trang --}}
         <div class="d-flex justify-content-center mt-3">
-            {{ $listsp->withQueryString()->links() }}
+            {{-- {{ $listsp->withQueryString()->links() }} --}}
         </div>
 
     </div>

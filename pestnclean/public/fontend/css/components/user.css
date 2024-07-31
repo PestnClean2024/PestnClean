@@ -1,0 +1,479 @@
+
+h1{
+  font-family: "Noto Serif";
+}
+.wrapper {
+    margin: auto;
+    padding: 0px 80px;
+}
+.form-check-input:checked {
+  background-color: #005ca9;
+}
+.submit {
+  padding: 10px 40px;
+  color: #fff;
+  background-color: #005ca9;
+  border-color: #005ca9;
+  border: none;
+  border-radius: 15px;
+  font-size: 14px;
+}
+a {
+  color: #9fa6ac;
+}
+hr{
+  width: 100%;
+}
+.user  h1 {
+  color: #005ca9;
+}
+.user .icon {
+  color: #6c757d;
+}
+.user label {
+  font-size: 16px;
+}
+.form-switch .form-check-input {
+  height: 1.3rem !important;
+  width: 3.3rem !important;
+}
+/* =============================================User==================================================== */
+/* -----------------------------------------------User_Aside------------------------------------ */
+.user .aside {
+  border: 2px solid #e3e3e3;
+  border-radius: 10px;
+  height: 100%;
+}
+.user .aside > .aside-main > div > p {
+  font-weight: bold;
+  color: #9fa6ac;
+}
+.user .aside > .aside-main > div > p.active {
+  color: #005ca9;
+}
+.user .aside > .aside-main > div > p > a {
+  text-decoration: none;
+  font-size: 18px;
+}
+.user .aside > .aside-main > div > p.active > a {
+  text-decoration: none;
+  color: #005ca9;
+}
+
+.user .aside > .aside-sub > div {
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: #9fa6ac;
+  display: grid;
+  grid-template-columns: 35px auto;
+}
+.user .aside > .aside-sub > div > .icon {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user .aside > .aside-sub > div a {
+  text-decoration: none;
+  font-size: 18px;
+}
+/* -----------------------------------------------User_Article------------------------------------ */
+/* ----------------------Article-info--------------------------- */
+
+.user .article-info .form {
+  display: grid;
+  grid-auto-rows: minmax(50px, auto);
+}
+.user .article-info .form > div {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  margin-bottom: 20px;
+  font-size: 13px;
+  align-items: center;
+  font-weight: bold;
+}
+.user .article-info .form > div > label {
+  display: flex;
+}
+.user .article-info .form > div > input.form-control {
+  grid-column: 2/4;
+  border-radius: 25px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 155%;
+}
+.user .article-info .form > div > a {
+  color: #005ca9;
+}
+.user .article-info .change {
+  color: #005ca9;
+  display: flex;
+  justify-content: end;
+}
+/* ----------------------Article-address--------------------------- */
+/* .user .article-address > .content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+} */
+.user .article-address .content > .item > div {
+  display: flex;
+  justify-content: space-between;
+}
+.user .article-address .content > .item > .item-info {
+  font-weight: bold;
+}
+.user .article-address .content > .item > .item-info a {
+  color: #005ca9;
+}
+.user .article-address .content > .item > .item-address button {
+  color: #9fa6ac;
+  border-radius: 18px;
+  padding: 2px 20px !important;
+  border-color: #6c757d;
+  border: 1px solid #6c757d;
+  background-color: unset !important;
+  transition: 0.3s all ease;
+}
+.user .article-address .content > .item > .item-address button:hover {
+  background-color: #dedede !important;
+  transition: 0.3s all ease;
+}
+.user .article-address .content > .item > .item-note span {
+  padding: 2px 20px;
+  border: 1px solid #005ca9;
+  color: #005ca9;
+  border-radius: 18px;
+}
+/* ----------------------Article-notify--------------------------- */
+.user .article-notify .content > div {
+  display: flex;
+  justify-content: space-between;
+}
+/* =============================================Order==================================================== */
+/* -----------------------------------------------User_Aside------------------------------------ */
+.order-setting .aside {
+  border: 2px solid #e3e3e3;
+  border-radius: 10px;
+  height: 100%;
+}
+.order-setting .aside > .aside-main > div > p {
+  font-weight: bold;
+  color: #9fa6ac;
+}
+.order-setting .aside > .aside-main > div > p.active {
+  color: #005ca9;
+}
+.order-setting .aside > .aside-main > div > p > a {
+  text-decoration: none;
+}
+.order-setting .aside > .aside-main > div > p.active > a {
+  text-decoration: none;
+  color: #005ca9;
+}
+.order-setting .aside > .aside-sub > div {
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: #9fa6ac;
+  display: grid;
+  grid-template-columns: 35px auto;
+}
+.order-setting .aside > .aside-sub > div > .icon {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-setting .aside > .aside-sub > div a {
+  text-decoration: none;
+}
+/* -----------------------------------------------Order_Article------------------------------------ */
+/* ----------------------Article-order--------------------------- */
+.order-setting .article-order-content .item {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 2.8fr 1fr;
+  margin-bottom: 65px;
+}
+.order-setting .article-order-content > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+.order-setting .article-order-content .item-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+.order-setting .article-order-content .item-size {
+  font-size: 13px;
+  color: #9fa6ac;
+}
+/* ----------------------Article-notify--------------------------- */
+order-setting .aside {
+  border: 2px solid #e3e3e3;
+  border-radius: 10px;
+  height: 100%;
+}
+.order-setting .aside > .aside-main > div > p {
+  font-weight: bold;
+  color: #9fa6ac;
+}
+.order-setting .aside > .aside-main > div > p.active {
+  color: #005ca9;
+}
+.order-setting .aside > .aside-main > div > p > a {
+  text-decoration: none;
+}
+.order-setting .aside > .aside-main > div > p.active > a {
+  text-decoration: none;
+  color: #005ca9;
+}
+.order-setting .aside > .aside-sub > div {
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: #9fa6ac;
+  display: grid;
+  grid-template-columns: 35px auto;
+}
+.order-setting .aside > .aside-sub > div > .icon {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-setting .aside > .aside-sub > div a {
+  text-decoration: none;
+}
+/* -----------------------------------------------Order_Article------------------------------------ */
+/* ----------------------Article-order--------------------------- */
+.order-setting .article-order-content .item {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 2.8fr 1fr;
+  margin-bottom: 65px;
+  justify-items: center;
+}
+.order-setting .article-order-content > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+.order-setting .article-order-content .item-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+.order-setting .article-order-content .item-size {
+  font-size: 13px;
+  color: #9fa6ac;
+}
+/* ----------------------Article-notify--------------------------- */
+.order-setting .article-notify-content .item {
+  display: grid;
+  grid-template-columns: 1.1fr 6fr 2.5fr;
+  margin-bottom: 65px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.order-setting .article-notify-content .item {
+  margin-bottom: 40px;
+}
+.order-setting .article-notify-content .item p {
+  margin-bottom: 0;
+}
+.order-setting .article-notify-content .item-name {
+  font-weight: bold;
+}
+.order-setting .article-notify-content .text-detail {
+  color: #9fa6ac;
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+.order-setting .article-notify-content .btn-detail {
+  color: #9fa6ac;
+  border-radius: 18px;
+  padding: 1px 20px !important;
+  border-color: #6c757d;
+  border: 1px solid #6c757d;
+  background-color: unset !important;
+  transition: 0.3s all ease;
+}
+.order-setting .article-notify-content .btn-detail:hover {
+  background-color: #dedede !important;
+  transition: 0.3s all ease;
+}
+/* ----------------------Article-sale--------------------------- */
+.border {
+  border-left: 2px dashed #c9c9c9 !important;
+  height: 65%;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.order-setting .article-sale-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.order-setting .article-sale-content .item {
+  display: flex;
+  filter: drop-shadow(rgb(199, 199, 199) 0 0.5rem 5px);
+}
+
+.order-setting .article-sale-content .item-left {
+  height: 110%;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='166' height='208' viewBox='0 0 166 208' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M166 0.980469H0V1.07266C6.00244 1.73355 10.6719 6.82147 10.6719 13C10.6719 19.1785 6.00244 24.2664 0 24.9273V49.0727C6.00244 49.7336 10.6719 54.8215 10.6719 61C10.6719 67.1785 6.00244 72.2664 0 72.9273V97.0727C6.00244 97.7336 10.6719 102.821 10.6719 109C10.6719 115.179 6.00244 120.266 0 120.927V145.073C6.00244 145.734 10.6719 150.821 10.6719 157C10.6719 163.179 6.00244 168.266 0 168.927V193.073C6.00244 193.734 10.6719 198.821 10.6719 205C10.6719 206.029 10.5424 207.027 10.2988 207.98H166V0.980469Z' fill='%23E8F2FD'/%3E%3C/svg%3E")
+    no-repeat center center / cover;
+  display: grid;
+  align-items: center;
+  padding: 30px;
+}
+
+.order-setting .article-sale-content .item-left p {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  color: #005ca9;
+}
+.order-setting .article-sale-content .item-left .sale {
+  font-weight: bold;
+  font-size: 50px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.order-setting .article-sale-content .item-left .saled {
+  font-size: 12px;
+}
+.order-setting .article-sale-content .item-center {
+  height: 110%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='207' viewBox='0 0 24 207' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 2.47923C24 10.6941 18.6274 17.3535 12 17.3535C5.37258 17.3535 0 10.6941 0 2.47923C0 1.63453 0.0568065 0.806265 0.165943 0H0V2.47923V205.761V207H0.0410572C0.0138657 206.591 0 206.178 0 205.761C0 197.546 5.37258 190.886 12 190.886C18.6274 190.886 24 197.546 24 205.761C24 206.178 23.9861 206.591 23.9589 207H24V205.761V2.47923ZM24 2.47923C24 1.63453 23.9432 0.806265 23.8341 0H24V2.47923Z' fill='%23E8F2FD'/%3E%3C/svg%3E")
+    no-repeat center center / cover;
+}
+.order-setting .article-sale-content .item-right {
+  position: relative;
+  color: #005ca9;
+  width: 100%;
+  height: 110%;
+  display: grid;
+  align-items: center;
+  background-color: #e8f2fd;
+  border-radius: 0 7px 7px 0;
+  padding: 30px 20px 10px 20px;
+}
+.order-setting .article-sale-content .item-right .title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #022648;
+  width: 40%;
+  border-radius: 0 7px 0 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: 100;
+}
+.order-setting .article-sale-content .item-right button {
+  padding: 5px 20px;
+  font-size: 20px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+.order-setting .article-sale-content .item-right .link {
+  display: flex;
+  font-size: 13px;
+  color: #005ca9;
+  justify-content: end;
+}
+
+/* -------------------------------------------------------------------------------- */
+.order-setting .article-sale-content .item.saved {
+  display: flex;
+  filter: drop-shadow(rgb(199, 199, 199) 0 0.5rem 5px);
+}
+
+.order-setting .article-sale-content .item.saved .item-left {
+  height: 110%;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='166' height='208' viewBox='0 0 166 208' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M166 0.980469H0V1.07266C6.00244 1.73355 10.6719 6.82147 10.6719 13C10.6719 19.1785 6.00244 24.2664 0 24.9273V49.0727C6.00244 49.7336 10.6719 54.8215 10.6719 61C10.6719 67.1785 6.00244 72.2664 0 72.9273V97.0727C6.00244 97.7336 10.6719 102.821 10.6719 109C10.6719 115.179 6.00244 120.266 0 120.927V145.073C6.00244 145.734 10.6719 150.821 10.6719 157C10.6719 163.179 6.00244 168.266 0 168.927V193.073C6.00244 193.734 10.6719 198.821 10.6719 205C10.6719 206.029 10.5424 207.027 10.2988 207.98H166V0.980469Z' fill='%23ffffff'/%3E%3C/svg%3E")
+    no-repeat center center / cover;
+  display: grid;
+  align-items: center;
+  padding: 30px;
+}
+
+.order-setting .article-sale-content .item.saved .item-left p {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  color: #333333;
+}
+.order-setting .article-sale-content .item.saved .item-left .sale {
+  font-weight: bold;
+  font-size: 50px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.order-setting .article-sale-content .item.saved .item-left .saled {
+  font-size: 12px;
+}
+.order-setting .article-sale-content .item.saved .item-center {
+  height: 110%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='207' viewBox='0 0 24 207' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 2.47923C24 10.6941 18.6274 17.3535 12 17.3535C5.37258 17.3535 0 10.6941 0 2.47923C0 1.63453 0.0568065 0.806265 0.165943 0H0V2.47923V205.761V207H0.0410572C0.0138657 206.591 0 206.178 0 205.761C0 197.546 5.37258 190.886 12 190.886C18.6274 190.886 24 197.546 24 205.761C24 206.178 23.9861 206.591 23.9589 207H24V205.761V2.47923ZM24 2.47923C24 1.63453 23.9432 0.806265 23.8341 0H24V2.47923Z' fill='%23ffffff'/%3E%3C/svg%3E")
+    no-repeat center center / cover;
+}
+
+.order-setting .article-sale-content .item.saved .item-right {
+  position: relative;
+  color: #333333;
+  width: 100%;
+  height: 110%;
+  display: grid;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 0 7px 7px 0;
+  padding: 30px 20px 10px 20px;
+}
+.order-setting .article-sale-content .item.saved .item-right .title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #022648;
+  width: 40%;
+  border-radius: 0 7px 0 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: 100;
+}
+.order-setting .article-sale-content .item.saved .item-right button {
+  background-color: #ffffff;
+  padding: 5px 20px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 1px solid #333333;
+  color: gray;
+  font-weight: bold;
+}
+.order-setting .article-sale-content .item.saved .item-right .link {
+  display: flex;
+  font-size: 13px;
+  color: #333333;
+  justify-content: end;
+}
+/* -------------------------------------------------------------------------------- */
+
+.order-setting .article-sale-content .item.expired .item-right .title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #333333;
+  width: 40%;
+  border-radius: 0 7px 0 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: 100;
+}

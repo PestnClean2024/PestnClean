@@ -69,6 +69,59 @@
         <p>No images available for this product.</p>
     @endif
 
+    <h1>Feedback for {{ $product->name }}</h1>
+
+    <!-- Display existing feedback -->
+    <div>
+        <h2>Customer Feedback</h2>
+        @if ($feedbacks->isNotEmpty())
+            @foreach ($feedbacks as $feedback)
+                <div>
+                    <p><strong>User:</strong> {{ $feedback->user->fullname }}</p>
+                    <p><strong>Rating:</strong> {{ $feedback->rating }}/5</p>
+                    <p>{{ $feedback->content }}</p>
+                </div>
+            @endforeach
+            {{ $feedbacks->links() }}
+        @else
+            <p>No feedback available for this product.</p>
+        @endif
+    </div>
+
+    <!-- Feedback form -->
+    <div>
+        <h2>Leave a Feedback</h2>
+        @if (Route::has('login'))
+            @auth
+                <form action="{{ route('feedback.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="user_id" value="{{ session('user')->id }}">
+
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <textarea name="content" id="content" class="form-control" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select name="rating" id="rating" class="form-control" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </form>
+            @else
+                <p>Please <a href="{{ route('login') }}">log in</a> to leave feedback.</p>
+            @endauth
+        @endif
+    </div>
+
     <script>
         function updateQuantity() {
             const sizeSelect = document.getElementById('size');
