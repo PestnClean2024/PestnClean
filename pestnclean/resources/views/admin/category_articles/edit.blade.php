@@ -29,25 +29,23 @@
               <input type="text" class="form-control" name="title" id="title" value="{{ old('title', $category->title) }}" placeholder="Enter title">
             </div>
             <div class="form-group">
-              <label for="description">Mô tả</label>
-              <input type="text" class="form-control" name="description" id="description" value="{{ old('description', $category->description) }}" placeholder="Enter description">
+              <label for="exampleInputPassword1">Description</label>
+              <input type="text" value="{{$category->description}}" class="form-control" name="description" id="exampleInputPassword1" placeholder="Enter description">
             </div>
             <div class="form-group">
               <label for="category_parent">Danh mục cha</label>
               <select class="form-control" name="category_parent" id="category_parent">
-                <option value="0" {{ $category->category_parent == 0 ? 'selected' : '' }}>---Root---</option>
-                @foreach($categories as $cat)
-                    <option value="{{ $cat->id }}" {{ $cat->id == $category->category_parent ? 'selected' : '' }}>
-                        @if($cat->level > 1)
-                            @for ($i = 1; $i < $cat->level; $i++)
-                                -- 
-                            @endfor
-                        @endif
-                        {{ $cat->title }}
-                    </option>
-                @endforeach
+                  <option value="0" {{ $category->category_parent == 0 ? 'selected' : '' }}>---Root---</option>
+                  @foreach($categories as $cat)
+                      <option value="{{ $cat->id }}" {{ $cat->id == $category->category_parent ? 'selected' : '' }}>
+                          @for ($i = 1; $i < $cat->level; $i++)
+                              -- 
+                          @endfor
+                          {{ $cat->title }}
+                      </option>
+                  @endforeach
               </select>
-            </div>
+          </div>
             <div class="form-group">
               <label for="image">Hình ảnh</label>
               <div class="input-group">

@@ -3,13 +3,13 @@
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\categoriesArticlesController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CustomerController;
-=======
+
 use App\Http\Controllers\ShopController;
->>>>>>> 0d4d1ea94d34ae96455373d3b1376e019d7015bc
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
@@ -41,7 +41,7 @@ Route::middleware(['role:superadmin,admin,executive'])->group(function () {
     Route::resource('access', AccessController::class);
 });
 
-<<<<<<< HEAD
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Quản lý admin
@@ -58,9 +58,10 @@ Route::resource('categoriesArticles', CategoriesArticlesController::class);
 Route::resource('articles', ArticlesController::class);
 //Quản lý tài khoản khách hàng
 Route::resource('customers', CustomerController::class);
+Route::patch('customers/{customer}/lock', [CustomerController::class, 'lock'])->name('customers.lock');
+Route::patch('customers/{customer}/unlock', [CustomerController::class, 'unlock'])->name('customers.unlock');
 
-=======
->>>>>>> 0d4d1ea94d34ae96455373d3b1376e019d7015bc
+
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -68,12 +69,11 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.details');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-<<<<<<< HEAD
-=======
+
 
 //giỏ hàng
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/addtocart', [CartController::class, 'store'])->name('cart.store');
 Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
->>>>>>> 0d4d1ea94d34ae96455373d3b1376e019d7015bc
+

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\ProductImage;
+use App\Utils\AccessLogger;
 class ProductController extends Controller
 {
     public function index()
@@ -88,7 +89,9 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã tạo sản phẩm {$product->id} thành công");
         return redirect()->route('products.index');
     }
 
@@ -172,7 +175,9 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã cập nhật sản phẩm {$product->id} thành công");
         return redirect()->route('products.index');
     }
 
@@ -204,7 +209,9 @@ class ProductController extends Controller
 
         // Delete the product
         $product->delete();
-
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
 

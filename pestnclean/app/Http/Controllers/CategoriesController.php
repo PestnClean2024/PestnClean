@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+use App\Utils\AccessLogger;
 class CategoriesController extends Controller
 {
     /**
@@ -70,8 +70,10 @@ class CategoriesController extends Controller
 
         // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
-
-        return redirect()->route('categories.index')->with('success', 'Danh mục đã được thêm thành công.');
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã tạo dịch vụ {$category->id} thành công");
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -131,6 +133,9 @@ class CategoriesController extends Controller
 
     // Lưu các thay đổi
     $category->save();
+    $user = auth()->user()->fullname;
+    $user_role = auth()->user()->role;
+    AccessLogger::log("{$user}-{$user_role} đã cập nhật dịch vụ {$category->id} thành công");
     return redirect()->route('categories.index');
 }
 

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CategoriesController;
+use App\Models\Category;
 use App\Http\Controllers\CategoriesArticlesController;
 
 class Article extends Model

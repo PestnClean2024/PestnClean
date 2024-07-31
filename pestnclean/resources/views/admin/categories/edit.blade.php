@@ -42,6 +42,7 @@
             <img width="80px" height="80px" src="{{asset('uploads/categories/'.$category->image)}}">
           </div>
         </div>
+        
         <div class="form-group">
             <label for="category_parent">Thuộc danh mục</label>
             <select class="form-control" name="category_parent" id="category_parent">

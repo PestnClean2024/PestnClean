@@ -15,9 +15,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Phone</th>
                 <th scope="col">Address</th>
-                <th scope="col">Password</th>
+                <th scope="col">Status</th>
                 <th scope="col">Manage</th>
             </tr>
         </thead>
@@ -27,16 +26,28 @@
                     <th scope="row">{{$key + 1}}</th>
                     <td>{{$customer->fullname}}</td>
                     <td>{{$customer->email}}</td>
-                    <td>{{$customer->phone}}</td>
                     <td>{{$customer->address}}</td>
-                    <td>{{ substr($customer->password, 0, 10) }}...</td>
                     <td>
-                        <a class="btn btn-warning" href="{{ route('customers.edit', [$customer->id]) }}">Sửa</a>
-                        <form onsubmit="return confirm('You definitely want to delete?');" action="{{ route('customers.destroy', [$customer->id]) }}" method="POST" style="display:inline;">
-                            @method('DELETE')
-                            @csrf
-                            <input class="btn btn-danger" type="submit" value="Xóa">
-                        </form>
+                        @if($customer->status == 1)
+                            <span class="text-success">Active</span>
+                        @else
+                            <span class="text-danger">Locked</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if($customer->status == 1)
+                            <form action="{{ route('customers.lock', [$customer->id]) }}" method="POST" style="display:inline;">
+                                @method('PATCH')
+                                @csrf
+                                <input class="btn btn-danger" type="submit" value="Khóa">
+                            </form>
+                        @else
+                            <form action="{{ route('customers.unlock', [$customer->id]) }}" method="POST" style="display:inline;">
+                                @method('PATCH')
+                                @csrf
+                                <input class="btn btn-success" type="submit" value="Mở khóa">
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
+use App\Utils\AccessLogger;
 
 class CategoriesArticlesController extends Controller
 {
@@ -57,7 +58,10 @@ class CategoriesArticlesController extends Controller
     }
 
     $category->save();
-    return redirect()->route('categoriesArticles.create')->with('success', 'Danh mục bài viết đã được tạo.');
+    $user = auth()->user()->fullname;
+    $user_role = auth()->user()->role;
+    AccessLogger::log("{$user}-{$user_role} đã thêm danh mục bài viết {$category->id} thành công");
+    return redirect()->route('categoriesArticles.index')->with('success', 'Danh mục bài viết đã được tạo.');
 }
 
     /**
@@ -113,8 +117,10 @@ class CategoriesArticlesController extends Controller
         }
 
         $category->save();
-
-        return redirect()->route('categoriesArticles.index')->with('success', 'Danh mục bài viết đã được cập nhật thành công.');
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã cập nhật danh mục bài viết {$category->id} thành công");
+        return redirect()->route('categoriesArticles.index');
     }
 
     /**
@@ -134,6 +140,6 @@ class CategoriesArticlesController extends Controller
 
         $category->delete();
 
-        return redirect()->route('category_articles.index')->with('success', 'Danh mục bài viết đã được xóa thành công.');
+        return redirect()->route('categoriesArticles.index')->with('success', 'Danh mục bài viết đã được xóa thành công.');
     }
 }
