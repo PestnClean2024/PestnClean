@@ -3,6 +3,11 @@
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceCleaningController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BlogController;
 
 use App\Http\Controllers\categoriesArticlesController;
 use App\Http\Controllers\ArticlesController;
@@ -41,8 +46,12 @@ Route::middleware(['role:superadmin,admin,executive'])->group(function () {
     Route::resource('access', AccessController::class);
 });
 
+Route::resource('user', UserController::class);
+Route::get('order', [OrderController::class, 'index'])->name('order');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('service', [ServiceController::class, 'index'])->name('service');
+Route::get('service-cleaning', [ServiceCleaningController::class, 'index'])->name('service-cleaning');
 
 //Quản lý admin
 // Dịch vụ
@@ -68,6 +77,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.details');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::post('feedback', [ShopController::class, 'store'])->name('feedback.store');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 
 

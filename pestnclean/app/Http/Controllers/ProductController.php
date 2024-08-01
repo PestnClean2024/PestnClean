@@ -9,11 +9,6 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\ProductImage;
-<<<<<<< HEAD
-use App\Utils\AccessLogger;
-=======
-
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
 class ProductController extends Controller
 {
     public function index()
@@ -94,16 +89,9 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo sản phẩm {$product->id} thành công");
-=======
-        //Log thông báo hành động
-        $user = auth()->user()->fullname;
-        $user_role = auth()->user()->role;
-        AccessLogger::log("{$user}-{$user_role} đã thêm sản phẩm thành công");
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         return redirect()->route('products.index');
     }
 
@@ -187,17 +175,9 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã cập nhật sản phẩm {$product->id} thành công");
-=======
-        //Log thông báo hành động
-        $user = auth()->user()->fullname;
-        $user_role = auth()->user()->role;
-        AccessLogger::log("{$user}-{$user_role} đã sửa sản phẩm {$product->id} thành công");
-
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         return redirect()->route('products.index');
     }
 
@@ -229,11 +209,6 @@ class ProductController extends Controller
 
         // Delete the product
         $product->delete();
-<<<<<<< HEAD
-=======
-
-        //Log thông báo hành động
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");

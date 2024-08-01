@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Utils\AccessLogger;
 class CategoriesController extends Controller
 {
     /**
@@ -67,18 +66,10 @@ class CategoriesController extends Controller
 
         // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
-<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo dịch vụ {$category->id} thành công");
         return redirect()->route('categories.index');
-=======
-        //Log thông báo hành động
-        $user = auth()->user()->fullname;
-        $user_role = auth()->user()->role;
-        AccessLogger::log("{$user}-{$user_role} đã thêm danh mục thành công");
-        return redirect()->back();
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
     }
 
     /**
@@ -145,17 +136,7 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index');
     }
 
-<<<<<<< HEAD
-    // Lưu các thay đổi
-    $category->save();
-    $user = auth()->user()->fullname;
-    $user_role = auth()->user()->role;
-    AccessLogger::log("{$user}-{$user_role} đã cập nhật dịch vụ {$category->id} thành công");
-    return redirect()->route('categories.index');
-}
 
-=======
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
 
 
     /**
@@ -174,6 +155,6 @@ class CategoriesController extends Controller
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Danh mục đã được xóa thành công.');
-    
+
     }
 }
