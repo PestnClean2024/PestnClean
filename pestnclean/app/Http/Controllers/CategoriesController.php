@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Models\Category;
-
 class CategoriesController extends Controller
 {
     /**
@@ -67,11 +66,10 @@ class CategoriesController extends Controller
 
         // Lưu danh mục vào cơ sở dữ liệu
         $category->save();
-        //Log thông báo hành động
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
-        AccessLogger::log("{$user}-{$user_role} đã thêm danh mục thành công");
-        return redirect()->back();
+        AccessLogger::log("{$user}-{$user_role} đã tạo dịch vụ {$category->id} thành công");
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -140,6 +138,7 @@ class CategoriesController extends Controller
 
 
 
+
     /**
      * Remove the specified resource from storage.
      */
@@ -156,6 +155,6 @@ class CategoriesController extends Controller
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Danh mục đã được xóa thành công.');
-    
+
     }
 }

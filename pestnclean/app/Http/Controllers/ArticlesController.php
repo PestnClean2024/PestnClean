@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\CategoryArticle;
+use App\Http\Controllers\CategoriesController;
 class ArticlesController extends Controller
 {
     /**
@@ -80,7 +82,8 @@ class ArticlesController extends Controller
     {
         $article = Article::findOrFail($id);
         $categories = CategoryArticle::all();
-        return view('admin.articles.edit', compact('article', 'categories'));
+        $listCategory = $this->getArticles();
+        return view('admin.articles.edit', compact('article', 'categories','listCategory'));
     }
 
     /**

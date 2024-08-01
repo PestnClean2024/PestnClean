@@ -198,22 +198,45 @@
     <script src="{{ asset('backend/dist/js/pages/dashboard3.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<<<<<<< HEAD
+
+
+{{-- <script>
+  $( function() {
+    $( "#departure_date" ).datepicker();
+    $( "#return_date" ).datepicker();
+  } );
+  </script> --}}
+  <script>
+    let table = new DataTable('#myTable');
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+  
+  {{-- <script>
+      CKEDITOR.replace( 'description' );
+      CKEDITOR.replace( 'content' );
+  </script> --}}
+
+    {{-- <script>
+=======
     <script>
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         $(function() {
             $("#departure_date").datepicker();
             $("#return_date").datepicker();
-        });
-    </script>
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        }); --}}
+    {{-- </script> --}}
+    
 
     <script>
-        CKEDITOR.replace('description');
+        
         CKEDITOR.replace('content');
     </script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
 </body>
 
 </html>

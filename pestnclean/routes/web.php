@@ -4,8 +4,9 @@ use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\categoriesArticlesController;
+use App\Http\Controllers\categoriesArticlesController;  
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ShopController;
@@ -31,6 +32,8 @@ Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.det
 Route::post('/feedback', [ShopController::class, 'storeFeedback'])->name('feedback.store');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 
 Route::middleware(['guest'])->group(function () {

@@ -14,7 +14,27 @@ class CustomerController extends Controller
         $customers = User::where('role','customer')->get();
         return view('admin.customers.index', compact('customers'));
     }
+    public function lock($id)
+    {
+        $customer = User::find($id);
+        if ($customer && $customer->role == 'customer') {
+            $customer->status = 0;
+            $customer->save();
+            return redirect()->route('customers.index')->with('success', 'Tài khoản đã bị khóa.');
+        }
+        return redirect()->route('customers.index')->with('error', 'Không tìm thấy khách hàng.');
+    }
 
+    public function unlock($id)
+    {
+        $customer = User::find($id);
+        if ($customer && $customer->role == 'customer') {
+            $customer->status = 1;
+            $customer->save();
+            return redirect()->route('customers.index')->with('success', 'Tài khoản đã được mở khóa.');
+        }
+        return redirect()->route('customers.index')->with('error', 'Không tìm thấy khách hàng.');
+    }
     /**
      * Show the form for creating a new resource.
      */

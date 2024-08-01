@@ -37,22 +37,38 @@
                     <img src="{{ asset('uploads/articles/'.$article->image) }}" alt="{{ $article->title }}" width="100">
                 @endif
             </div>
-            <div class="form-group">
-                <label for="category_parent">Danh mục cha</label>
+
+            {{-- <div class="form-group">
+                <label for="category_parent">Thuộc danh mục</label>
                 <select class="form-control" name="category_parent" id="category_parent">
-                  <option value="0" {{ $article->category_parent == 0 ? 'selected' : '' }}>---Root---</option>
+                  <option value="0" {{ $category->category_parent == 0 ? 'selected' : '' }}>---Root---</option>
                   @foreach($categories as $cat)
-                      <option value="{{ $cat->id }}" {{ $cat->id == $article->category_id ? 'selected' : '' }}>
-                          @if($cat->level > 1)
-                              @for ($i = 1; $i < $cat->level; $i++)
-                                  -- 
-                              @endfor
-                          @endif
-                          {{ $cat->title }}
+                      <option value="{{ $cat->id }}" {{ $cat->id == $category->category_parent ? 'selected' : '' }}>
+                        @if($cat->level > 1)
+                          @for ($i = 1; $i < $cat->level; $i++)
+                            -- 
+                          @endfor
+                        @endif
+                        {{ $cat->title }}
                       </option>
-                  @endforeach
+                  @endforeach 
                 </select>
-              </div>
+              </div> --}}
+
+              <div class="form-group">
+                <label for="category_id">Danh mục cha</label>
+                <select class="form-control" name="category_id" id="category_id">
+                    <option value="0" {{ $article->category_id == 0 ? 'selected' : '' }}>---Root---</option>
+                    @foreach($listCategory as $cat)
+                        <option value="{{ $cat->id }}" {{ $cat->id == $article->category_id ? 'selected' : '' }}>
+                            @for ($i = 1; $i < $cat->level; $i++)
+                                -- 
+                            @endfor
+                            {{ $cat->title }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <div class="form-check">
                 <input type="checkbox" value="1" class="form-check-input" name="status" id="status" {{ $article->status ? 'checked' : '' }}>
                 <label class="form-check-label" for="status">Active</label>

@@ -35,10 +35,10 @@
                     <a class="nav-link" href="{{ route('service-cleaning') }}">Dịch vụ cleaning (test)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sản phẩm</a>
+                    <a class="nav-link" href="{{ route('shop.index') }}">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Liên hệ</a>
