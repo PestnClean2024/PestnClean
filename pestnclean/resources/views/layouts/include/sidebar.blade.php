@@ -45,7 +45,7 @@
                with font-awesome or any other icon font library -->
                 @if (auth()->user()->role === 'executive')
                     <li class="nav-item">
-                        <a href="{{ route('categoriesArticles.index') }}" class="nav-link">
+                        <a href="{{ route('executive.categoriesArticles.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-folder-plus"></i>
                             <p>
                                 Danh mục bài viết
@@ -54,15 +54,38 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('categoriesArticles.create') }}" class="nav-link">
+                                <a href="{{ route('executive.categoriesArticles.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Thêm danh mục </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('categoriesArticles.index') }}" class="nav-link">
+                                <a href="{{ route('executive.categoriesArticles.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liệt kê danh mục</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('executive.articles.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Quản lý bài viết
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('executive.articles.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Thêm bài viết</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('executive.articles.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Danh sách bài viết</p>
                                 </a>
                             </li>
                         </ul>
@@ -144,7 +167,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('invoice') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Danh sách các đơn hàng</p>
                                 </a>

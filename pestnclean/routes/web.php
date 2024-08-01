@@ -16,6 +16,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ServiceCleaningController;
 
 Route::fallback(function () {
@@ -40,7 +41,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['role:customer'])->group(function () {
     // Các route khác dành cho user
     Route::resource('user', UserController::class);
-    Route::get('/order', [OrderController::class,'index'])->name('order');
+    Route::get('/order', [OrderController::class, 'index'])->name('order');
     //giỏ hàng
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/addtocart', [CartController::class, 'store'])->name('cart.store');
@@ -48,7 +49,7 @@ Route::middleware(['role:customer'])->group(function () {
     Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
-Route::middleware(['role:superadmin,admin,executive'])->group(function () {
+Route::middleware(['role:superadmin,admin'])->group(function () {
     // Các route khác dành cho admin
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('categories', CategoriesController::class);
@@ -60,9 +61,19 @@ Route::middleware(['role:superadmin,admin,executive'])->group(function () {
     Route::resource('articles', ArticlesController::class);
     //Quản lý tài khoản khách hàng
     Route::resource('customers', CustomerController::class);
+    //Quản lý đơn hàng
+    Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice');
+    Route::get('invoice-detail/{id}', [InvoiceController::class, 'detail'])->name('invoice-detail');
+    Route::get('approve-order/{id}', [InvoiceController::class, 'approveOrder'])->name('approve-order');
 });
+
 Route::middleware(['role:executive'])->group(function () {
-    // Các route khác dành cho admin
-    //Bài viết
-    Route::resource('articles', ArticlesController::class);
+    //Danh mục bài viết cho executive
+    Route::resource('executive/categoriesArticles', CategoriesArticlesController::class, [
+        'as' => 'executive'
+    ]);
+    //Bài viết cho executive
+    Route::resource('executive/articles', ArticlesController::class, [
+        'as' => 'executive'
+    ]);
 });
