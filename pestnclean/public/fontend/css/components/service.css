@@ -27,14 +27,16 @@
 }
 
 .service-title-container h4 {
-    color: var(--Color, #FFF);
+    padding: 8px 16px;
+    gap: 8px;
+    border-radius: 16px;
+    background: var(--Blue-500, #005CA9);
+    color: #FFF;
+}
 
-    /* Title/Title Large */
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
-    /* 48px */
+.service-title-container h4:hover {
+    padding: 8px 16px;
+    border: 1px solid #fff;
 }
 
 .service-card-list {

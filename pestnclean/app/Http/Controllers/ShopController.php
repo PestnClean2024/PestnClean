@@ -18,7 +18,7 @@ class ShopController extends Controller
             $products = DB::table('products')->paginate(2);
         }
         $categories = DB::table('categories')->where('status', 'TRUE')->get();
-        return view('products.index', ['products' => $products, 'categories' => $categories]);
+        return view('client.product', ['products' => $products, 'categories' => $categories]);
     }
 
     public function shopDetails($product_id)

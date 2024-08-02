@@ -1,0 +1,214 @@
+.div-fillter{
+    width: 338px;
+    height: 2237px;
+    border: 1px solid #C8CCD0;
+    border-radius: 16px;
+    padding: 24px 16px 24px 16px;
+    gap: 24px;
+    justify-content: space-between;
+}
+.div-flex{
+    display: flex;
+    width: 306px;
+    height: 36px;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+.div-flex-no{
+    display: flex;
+    width: 282px;
+    height: 27px;
+    margin-top: 0.5rem;
+}
+.div-flex-filter{
+    display: flex;
+    width: 141px;
+    height: 27px;
+}
+.div-fiter{
+    width: 72px;
+    height: 36px;
+}
+.filter-color{
+    color: #005CA9;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+.img-fiter{
+    width: 24px;
+    height: 24px;
+    margin-top: 0.3rem;
+}
+.hr-filter{
+    width: 306px;
+    border: 1px solid black;
+    margin-top: 1rem;
+}
+.div-filter-all{
+    width: 306px;
+    height: 1473px;
+}
+.img-filter-2{
+    width: 20.47px;
+    height: 20.47px;
+    margin-top: 0.5rem;
+}
+.filter-size{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+}
+.filter-size-16{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 0.3rem;
+    color: black;
+}
+.filter-with{
+    width: 282px;
+    height: 27px;
+}
+.img-filter-3{
+    width: 13.65px;
+    height: 8.28px;
+    margin-top: 0.75rem;
+}
+.filter-top{
+    margin-top: 0.5rem;
+}
+.filter-with-248{
+    width: 248px;
+    height: 24px;
+    margin-left: 1rem;
+}
+.filter-top-1{
+    margin-top: 1rem;
+}
+.arrow-right {
+    width: 7.5px; 
+    height: 12px; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left: 20px solid #005CA9;
+    
+}
+.container-filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 27px;
+    width: 31px;
+    background-color: #98b7d0;
+    margin-top: 0.5rem;
+}
+.filter-sp{
+    margin-top: 0.5rem;
+}
+.filter-btn{
+    width: 113.5px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #C8CCD0;
+    padding: 0px 16px 0px 16px;
+    gap: 8px;
+}
+.filter-top-3{
+    margin-top: 4rem;
+}
+.hr-filter-top{
+    margin-top: 0rem;
+}
+.filter-a-m-l{
+    width: 48px;
+    height: 48px;
+    border-radius: 62px;
+    border: 1px solid #C8CCD0;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 12px;
+}
+.filter-a-m-t{
+    width: 68px;
+    height: 48px;
+    border-radius: 62px;
+    border: 1px solid #005CA9;
+    background-color: #005CA9;
+    color: white;
+    padding: 10px;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.span-cell-1{
+    font-size: 32px;
+    line-height: 48px;
+    float: left;
+    width: 598px;
+    height: 60px;
+}
+.product-input-filter {
+    width: 40px;
+    border: 1px solid #C8CCD0;
+    border-radius: 7px;
+    margin-left: 0.9rem;
+    height: 40px;
+    margin-top: 0.1rem;
+}
+.filter-btn-img {
+    height: 40px;
+    margin-left: 10.5rem;
+    border-radius: 7px;
+    margin-top: 0.2rem;
+    border: 1px solid #C8CCD0;
+    width: 40px;
+}
+.filter-i-color {
+    color: #C8CCD0;
+    margin-top: .8rem;
+    margin-left: -2.3rem;
+}
+.div-flex-fiter{
+    display: flex;
+    gap: 8px;
+    margin-top: 0.5rem;
+}
+.filter-color-p{
+    color: #C8CCD0;
+}
+.fiter-btn-p{
+    width: 63px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 2px 4px 2px 8px;
+    font-size: 14px;
+    font-weight: 400;
+    gap: 8px;
+}
+.fiter-btn-p1{
+    width: 142px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 2px 4px 2px 8px;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.fiter-btn-p2{
+    width: 179px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 2px 4px 2px 8px;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.underline-text{
+    text-decoration: underline;
+    color: #21A612;
+}

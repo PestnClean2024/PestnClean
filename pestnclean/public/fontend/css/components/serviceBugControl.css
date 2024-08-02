@@ -1,0 +1,328 @@
+.service-bug-control-text-and-video-container {
+    padding: 20px 80px;
+}
+
+.service-bug-control-text-and-video-container .headline {
+    color: var(--Neutral-500, #868E96);
+
+    /* Display/Display Large */
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 84px */
+    text-transform: uppercase;
+}
+
+.service-bug-control-text-and-video-container p {
+    color: var(--Neutral-500, #868E96);
+
+    /* Body/Body Large */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 27px */
+}
+
+.service-bug-control-text-and-video-container p .p-bold {
+    color: var(--Neutral-950, #0C0D0E);
+
+    /* Title/Title Medium 2 */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.service-bug-control-text-and-video-container p .p-brand {
+    color: var(--Neutral-500, #868E96);
+
+    /* Title/Title Medium 2 */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    text-decoration-line: underline;
+}
+
+.service-bug-control-text-and-video-container .row .col .video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-bug-control-text-and-video-container .row .col .video-container .video-player {
+    width: 100%;
+    height: 340px;
+    background-color: var(--Blue-500);
+}
+
+.service-bug-control-charts-container {
+    width: 100%;
+    padding: 20px 80px;
+}
+
+.service-bug-control-charts-container .row .col .chart-image-and-text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-bug-control-charts-container .row .col .chart-image-and-text-container img {
+    width: 100%;
+    height: 450px;
+}
+
+.service-bug-control-charts-container .row .col .chart-image-and-text-container p {
+    color: var(--Neutral-500, #868E96);
+    text-align: center;
+
+    /* Title/Title Large */
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 48px */
+}
+
+.service-bug-control-category-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 80px;
+}
+
+.service-bug-control-category-container .service-title {
+    padding-left: 150px;
+    padding-right: 150px;
+    color: var(--Neutral-500, #868E96);
+    text-align: center;
+
+    /* Display/Display Large */
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 84px */
+    text-transform: uppercase;
+}
+
+.service-bug-control-category-container .category-card-list-container {
+    width: 100%;
+}
+
+.service-bug-control-category-container .category-card-list-container .row .col .category-card {
+    display: flex;
+    width: 100%;
+    height: 320px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    gap: 16px;
+    border-radius: var(--Corner-Large, 16px);
+    background: var(--Color-7, rgba(36, 36, 36, 0.45));
+    color: white;
+    padding: 20px;
+    background-size: cover;
+    opacity: 2;
+}
+
+.service-bug-control-category-container .category-card-list-container .row .col .category-card h4 {
+    padding: 20px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    color: var(--Color, #FFF);
+    text-overflow: ellipsis;
+
+    /* Title/Title Large */
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 48px */
+    z-index: 5;
+}
+
+.service-bug-control-category-container .category-card-list-container .row .col .category-card .p-container-with-green-top-border {
+    position: absolute;
+    bottom: 0;
+    border-top: 2px solid #21A612;
+    align-self: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.service-bug-control-category-container .category-card-list-container .row .col .category-card .p-container-with-green-top-border p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    color: var(--Color, #FFF);
+    text-overflow: ellipsis;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Heading/Headline Large */
+    font-family: "Noto Serif";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 60px */
+}
+
+.service-bug-control-species-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 80px;
+}
+
+.service-bug-control-species-container .service-bug-control-species-title {
+    padding-left: 120px;
+    padding-right: 120px;
+    color: var(--Neutral-500, #868E96);
+    text-align: center;
+
+    /* Display/Display Large */
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 84px */
+    text-transform: uppercase;
+}
+
+.service-bug-control-species-supporting-text {
+    color: var(--Neutral-500, #868E96);
+    text-align: center;
+
+    /* Body/Body Large */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 27px */
+}
+
+.service-bug-control-species-supporting-text-hightlight {
+    color: var(--Neutral-500, #868E96);
+
+    /* Title/Title Medium 2 */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.service-bug-control-species-card-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-bug-control-species-card-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--Number, 16px);
+    border: 1px solid var(--Color-6, rgba(36, 36, 36, 0.85));
+    padding: 0;
+    margin-right: 20px;
+    position: relative;
+}
+
+.service-bug-control-species-card-item .card-item-top-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.service-bug-control-species-card-item .card-item-top-content .card-item-img {
+    width: 58px;
+    height: 58px;
+}
+
+.service-bug-control-species-card-item .card-item-top-content .card-item-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: stretch;
+    color: var(--Neutral-950, #0C0D0E);
+    text-align: center;
+
+    /* Title/Title Medium */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 36px */
+}
+
+.service-bug-control-species-card-item .card-item-more-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    padding: 20px;
+    border-radius: 0px 0px var(--Number, 16px) var(--Number, 16px);
+    border: var(--Number-3, 1px) solid var(--Color-8, rgba(36, 36, 36, 0.25));
+    background-color: #FFF;
+}
+
+.service-bug-control-species-card-item .card-item-more-button:hover {
+    border-radius: 0px 0px var(--Number, 16px) var(--Number, 16px);
+    border: var(--Number-3, 1px) solid var(--Color-6, rgba(36, 36, 36, 0.85));
+    background: var(--Color-8, rgba(36, 36, 36, 0.25));
+}
+
+.service-bug-control-species-card-item .card-item-more-button .button-text {
+    margin: 0;
+    color: var(--Blue-950, #020D17);
+
+    /* Title/Title Medium */
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 36px */
+}
+
+.service-bug-control-species-card-item .card-item-more-button .button-img {
+    width: 15px;
+    height: 15px;
+}

@@ -1,0 +1,274 @@
+/* Header */
+.abouts-page-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 399.982px;
+    flex-direction: column;
+    background-color: var(--Blue-500);
+}
+
+.abouts-page-header .headline {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.abouts-page-header .headline .title {
+    font-family: "Noto Serif";
+    width: max-content;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 16.06%, #FFF 86.9%, rgba(255, 255, 255, 0.00) 106.25%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FFF;;
+}
+
+.abouts-page-header .headline .btn-header {
+    padding: 8px 16px;
+    gap: 8px;
+    border-radius: 16px;
+    background: var(--Blue-500);
+    color: #FFF;
+    font-size: 32px;
+}
+
+.abouts-page-header .headline .btn-header:hover {
+    padding: 8px 16px;
+    border: 1px solid #fff;
+}
+
+/* Title */
+.abouts-page-title {
+    margin: 80px 0px;
+}
+
+.abouts-page-title .title {
+    color: var(--Blue-500, #005CA9);
+    text-align: center;
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+    padding: 0px 80px;
+}
+
+/* Journey */
+.abouts-page-journey {
+    padding: 80px;
+}
+
+.abouts-page-journey .title {
+    color: var(--Blue-500, #005CA9);
+    font-family: "Noto Serif";
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.abouts-page-journey .description {
+    color: var(--Neutral-500, #868E96);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.abouts-page-journey .description .highlight {
+    font-weight: 700;
+}
+
+.abouts-page-journey .first {
+    margin-bottom: 169px;
+}
+
+.abouts-page-journey .first .images {
+    display: flex;
+    justify-content: right;
+    margin-right: 80px;
+}
+
+.abouts-page-journey .second {
+    margin-bottom: 169px;
+}
+
+.abouts-page-journey .second .images {
+    display: flex;
+    justify-content: left;
+    margin-left: 80px;
+}
+
+.abouts-page-journey .third .images {
+    display: flex;
+    justify-content: right;
+    margin-right: 80px;
+}
+
+/* Vision */
+.abouts-page-vision {
+    margin: 80px 0px;
+    padding: 0px 80px;
+}
+
+.abouts-page-vision .content {
+    align-items: center;
+    text-align: justify;
+}
+
+.abouts-page-vision .content .title {
+    color: var(--Blue-500, #005CA9);
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.abouts-page-vision .content .description {
+    color: var(--Neutral-500, #868E96);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.abouts-page-vision .content .hightlight {
+    color: var(--Neutral-500, #868E96);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.abouts-page-vision .images {
+    display: flex;
+    align-items: center;
+}
+
+.abouts-page-vision .images img {
+    width: 100%;
+    height: 320px;
+}
+
+.abouts-page-vision .images .img-items:nth-child(1) {
+    display: flex;
+    padding: 40px 0px;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.abouts-page-vision .images .img-items:nth-child(2) {
+    display: flex;
+    padding: 40px 0px;
+    align-items: flex-end;
+    margin: 0px -56px;
+    width: 100%;
+    height: 70%;
+}
+
+.abouts-page-vision .images .img-items:nth-child(3) {
+    display: flex;
+    padding: 40px 0px;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mission */
+.abouts-page-mission {
+    padding: 0px 80px;
+    margin-bottom: 80px;
+}
+
+.abouts-page-mission .row {
+    display: flex;
+    align-items: center;
+}
+
+.abouts-page-mission .content .title {
+    color: var(--Blue-500, #005CA9);
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.abouts-page-mission .content .description {
+    color: var(--Neutral-500, #868E96);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: justify;
+}
+
+.abouts-page-mission .content .description .hightlight {
+    color: var(--Blue-500, #005CA9);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+/* Core values */
+.abouts-core-values {
+    padding: 0px 80px;
+    margin-bottom: 80px;
+}
+
+.abouts-core-values .headline {
+    margin-bottom: 80px;
+}
+
+.abouts-core-values .headline .title {
+    color: var(--Blue-500, #005CA9);
+    text-align: center;
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.abouts-core-values .content .card {
+    border-radius: var(--Corner-Large, 16px);
+    border: 1px solid var(--Neutral-200, #C8CCD0);
+    background: var(--White, #FFF);
+    padding: 0px;
+    width: 320px;
+}
+
+.abouts-core-values .content .card-body {
+    padding: 32px;
+}
+
+.abouts-core-values .content .card-body .title {
+    color: var(--Neutral-950, #0C0D0E);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.abouts-core-values .content .card .card-img-top {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}

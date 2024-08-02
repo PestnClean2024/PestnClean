@@ -4,7 +4,7 @@ use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\categoriesArticlesController;  
+use App\Http\Controllers\categoriesArticlesController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CustomerController;
@@ -24,8 +24,39 @@ Route::fallback(function () {
     return redirect()->back();
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', function () {
+    return view('client.about');
+})->name('about');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
 Route::get('/service-cleaning', [ServiceCleaningController::class, 'index'])->name('service-cleaning');
+// route test giao diện
+Route::get('/clean-solution', function () {
+    return view('client.cleanSolution');
+})->name('clean-solution');
+
+Route::get('/contact', function () {
+    return view('client.contact');
+})->name('contact');
+
+Route::get('/service-bug-control', function () {
+    return view('client.serviceBugControl');
+})->name('service-bug-control');
+
+Route::get('/land-scape-design', function () {
+    return view('client.landScapeDesign');
+})->name('land-scape-design');
+
+Route::get('/product-fillter', function () {
+    return view('client.productFillter');
+})->name('product-fillter');
+
+Route::get('/product-information-cart', function () {
+    return view('client.product-information-cart');
+})->name('product-information-cart');
+
+Route::get('/policy', function () {
+    return view('client.policy');
+})->name('policy');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'shopDetails'])->name('shop.details');

@@ -11,10 +11,15 @@
 }
 
 .header-logo-company-name {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     align-items: center;
     gap: 5px;
+}
+
+/* Fix NavBar Header bị trùng CSS */
+.nav-item-header {
+    width: auto !important;
 }
 
 .navbar-nav .nav-item a {
@@ -26,7 +31,7 @@
     font-weight: 600;
     line-height: 150%;
     margin: 0px 10px;
-    /* 27px */
+    width: max-content;
 }
 
 .navbar-nav .nav-link.active {

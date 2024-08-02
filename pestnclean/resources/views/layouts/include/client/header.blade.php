@@ -12,27 +12,22 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Về chúng tôi</a>
+                    <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="{{ route('service') }}" id="navbarDropdownMenuLink"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dịch vụ
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="{{ route('service-bug-control') }}">Kiểm soát côn trùng</a></li>
+                        <li><a class="dropdown-item" href="{{ route('service-cleaning') }}">Dịch vụ vệ sinh</a></li>
+                        <li><a class="dropdown-item" href="{{ route('clean-solution') }}">Giải pháp vệ sinh</a></li>
+                        <li><a class="dropdown-item" href="{{ route('land-scape-design') }}">Thi công cảnh quan</a></li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service') }}">Dịch vụ (test)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service-cleaning') }}">Dịch vụ cleaning (test)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('shop.index') }}">Sản phẩm</a>
@@ -41,7 +36,7 @@
                     <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liên hệ</a>
+                    <a class="nav-link" href="{{ route('contact') }}">Liên hệ</a>
                 </li>
             </ul>
         </div>
@@ -51,7 +46,7 @@
             <p>Xin chào, {{ session('user')->fullname }}!</p>
             <p>Vai trò: {{ session('user')->role }}</p>
             <a href="{{ route('user.index') }}">Xem thông tin</a>
-            <a href="{{ route('order') }}">Giỏ hàng</a>
+            <a href="{{ route('cart.index') }}">Giỏ hàng</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit">Logout</button>

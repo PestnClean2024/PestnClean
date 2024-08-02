@@ -24,7 +24,7 @@ class BlogController extends Controller
 
         $categories = DB::table('category_articles')->get();
 
-        return view('blog.index', ['blogs' => $blogs, 'categories' => $categories]);
+        return view('client.blog', ['blogs' => $blogs, 'categories' => $categories]);
     }
 
     public function show($id)
