@@ -11,39 +11,16 @@
             <div class="div-product-text">
                 <p class="p-product">Danh mục sản phẩm</p>
 
-                <a href="#" class="div-product-a">
+                @foreach($categories as $category)
+                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}" class="div-product-a">
                     <div class="product-text display">
-                        <span class="text">KIỂM SOÁT CÔN TRÙNG</span> <span class="color-top bold">
+                        <span class="text">{{ $category->title }}</span> <span class="color-top bold">
                             <img src="/FePestsClean/resources/images/product/product-chevron-right.png"
                                 alt=""></span>
                     </div>
                 </a>
+                @endforeach
 
-                <a href="#" class="div-product-a">
-                    <div class="product-text display">
-                        <span class="text">
-                            VỆ SINH CÔNG NGHIỆP
-                        </span>
-                        <span class="color-top"><img src="/FePestsClean/resources/images/product/product-chevron-right.png"
-                                alt=""></span>
-                    </div>
-                </a>
-
-                <a href="#" class="div-product-a">
-                    <div class="product-text display">
-                        <span class="text">GIẢI PHÁP VỆ SINH</span>
-                        <span class="color-top"><img src="/FePestsClean/resources/images/product/product-chevron-right.png"
-                                alt=""></span>
-                    </div>
-                </a>
-
-                <a href="#" class="div-product-a">
-                    <div class="product-text display div-size-desi">
-                        <span class="text a-size">THIẾT KẾ & THI CÔNG CÂY CẢNH</span>
-                        <span class="color-top"><img src="/FePestsClean/resources/images/product/product-chevron-right.png"
-                                alt="" class="top-left"></span>
-                    </div>
-                </a>
             </div>
 
             <div class="div-banner">
@@ -258,15 +235,17 @@
                 </div>
 
                 <div class="grid div-gird">
+
+                    {{-- @foreach($products as $product)
                     <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
+                        <a href="{{ route('shop.details', ['id' => $product->id]) }}">
                             <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
+                                src="{{ asset('uploads/products/' . $product->main_image) }}" style="height: 50px; object-fit: cover;" />
                             <div class="mt-2">
-                                <span class="text-muted1">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
+                                <span class="text-muted1">{{ $product->category_id }}</span>
+                                <h2 class="font-bold">{{ $product->name }}</h2>
+                                <p class="text-muted color-top">{{ $product->price }} ₫</p>
+                                <p class="text-color ">{{ $product->price }} ₫</p>
                                 <div class="text-div">
                                     <span class="text-sp">Hè Sang</span>
                                     <span class="text-smtn">Mới</span>
@@ -275,6 +254,9 @@
                         </a>
                         <button class="bg-secondary rounded">Giỏ hàng</button>
                     </div>
+                    @endforeach --}}
+
+
 
                     <div class="border-div rounded-lg  bg-card">
                         <a href="#">

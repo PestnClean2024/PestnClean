@@ -47,68 +47,37 @@
 
                     <hr class="hr-cart-product">
 
-                    <div class="cart-div-img div-cart-product">
-                        <img src="/FePestsClean/resources/images/product/product-img-horz.png" alt=""
-                            class="cart-img-z">
-                        <div class="div-cart-product cart-left">
-                            <div class="d-btn">
-                                <p class="p-div-cart-text cart-color">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621ml
-                                    (21Oz)</p>
-                                <button class="btn-cart cart-color-b">X xóa</button>
-                            </div>
-                            <p class="cart-size">Kích thước: M</p>
-                        </div>
-                        <p class="cart-size-tt tt-with cart-color">80.000đ</p>
-                        <div class="div-btn-tt">
-                            <button class="cart-size-tt btn-cart">-</button>
-                            <span class="cart-size-tt cart-color">2</span>
-                            <button class="cart-size-tt btn-cart cart-color-b">+</button>
-                        </div>
-                        <p class="cart-size-tt p-size-tt cart-color">160.000đ</p>
+                    @foreach ($cartItems as $item)
+        <div class="cart-div-img div-cart-product">
+            <img src="{{ asset('uploads/products/' . $item->product->main_image) }}" alt="" class="cart-img-z">
+            <div class="div-cart-product cart-left">
+                <div class="d-btn">
+                    <p class="p-div-cart-text cart-color">{{ $item->product->name }}</p>
+                    <form action="{{ route('cart.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-cart cart-color-b" type="submit" onclick="return confirm('Are you sure you want to delete this item?')">X Xoá</button>
+                    </form>
+                </div>
+                <p class="cart-size">Kích thước: {{ $item->size }}</p>
+            </div>
+            <p class="cart-size-tt tt-with cart-color">{{ number_format($item->product->price, 0, ',', '.') }}đ</p>
 
-                    </div>
+            <div class="div-btn-tt">
+                <form action="{{ route('cart.update', $item->id) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('PATCH')
+                    <button class="cart-size-tt btn-cart" type="submit" name="action" value="decrease">-</button>
+                    {{ $item->quantity }}
+                    <button class="cart-size-tt btn-cart cart-color-b" type="submit" name="action" value="increase">+</button>
+                </form>
+            </div>
+            <p class="cart-size-tt p-size-tt cart-color item-total-price">{{ number_format($item->total_price, 0, ',', '.') }}đ</p>
+        </div>
+        @endforeach
 
-                    <div class="cart-div-img div-cart-product">
-                        <img src="/FePestsClean/resources/images/product/product-img-horz.png" alt=""
-                            class="cart-img-z">
-                        <div class="div-cart-product cart-left">
-                            <div class="d-btn">
-                                <p class="p-div-cart-text cart-color">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621ml
-                                    (21Oz)</p>
-                                <button class="btn-cart cart-color-b">X xóa</button>
-                            </div>
-                            <p class="cart-size">Kích thước: M</p>
-                        </div>
-                        <p class="cart-size-tt tt-with cart-color">80.000đ</p>
-                        <div class="div-btn-tt">
-                            <button class="cart-size-tt btn-cart">-</button>
-                            <span class="cart-size-tt cart-color">2</span>
-                            <button class="cart-size-tt btn-cart cart-color-b">+</button>
-                        </div>
-                        <p class="cart-size-tt p-size-tt cart-color">160.000đ</p>
 
-                    </div>
 
-                    <div class="cart-div-img div-cart-product">
-                        <img src="/FePestsClean/resources/images/product/product-img-horz.png" alt=""
-                            class="cart-img-z">
-                        <div class="div-cart-product cart-left">
-                            <div class="d-btn">
-                                <p class="p-div-cart-text cart-color">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621ml
-                                    (21Oz)</p>
-                                <button class="btn-cart cart-color-b">X xóa</button>
-                            </div>
-                            <p class="cart-size">Kích thước: M</p>
-                        </div>
-                        <p class="cart-size-tt tt-with cart-color">80.000đ</p>
-                        <div class="div-btn-tt">
-                            <button class="cart-size-tt btn-cart">-</button>
-                            <span class="cart-size-tt cart-color">2</span>
-                            <button class="cart-size-tt btn-cart cart-color-b">+</button>
-                        </div>
-                        <p class="cart-size-tt p-size-tt cart-color">160.000đ</p>
-
-                    </div>
                     <hr class="hr-cart-product hr-cart-top">
                 </div>
 
@@ -117,15 +86,13 @@
 
                     <div class="cart-all-min">
                         <div>
-                            <input type="text" name="" id="" placeholder="Nhập mã giảm giá ( Nếu có )"
-                                class="input-cart">
+                            <input type="text" name="" id="" placeholder="Nhập mã giảm giá ( Nếu có )" class="input-cart">
                             <button class="btn-cart btn-with">Xác nhận</button>
                         </div>
 
                         <div class="cart-flex justify">
                             <div class="cart-flex">
-                                <img src="/FePestsClean/resources/images/product-cart/product-cell.png" alt=""
-                                    class="img-cell">
+                                <img src="/FePestsClean/resources/images/product-cart/product-cell.png" alt="" class="img-cell">
                                 <p class="p-size-cart">123giamgia</p>
                             </div>
                             <p class="p-size-cart p-color-with">-25.000đ [X]</p>
@@ -138,14 +105,14 @@
 
                         <div class="cart-flex justify">
                             <p class="p-size-cart">Tạm tính</p>
-                            <p class="p-size-cart-2 cart-color">160.000đ</p>
+                            <p class="p-size-cart-2 cart-color" id="subtotal">0đ</p>
                         </div>
 
                         <hr class="hr-cart-product-1">
 
                         <div class="cart-flex justify">
                             <p class="p-size-cart-2 cart-color">Tổng</p>
-                            <p class="p-size-cart-3 cart-color">160.000đ</p>
+                            <p class="p-size-cart-3 cart-color" id="total">0đ</p>
                         </div>
 
                         <div>
@@ -371,8 +338,28 @@
                 </div>
             </div>
         </div>
-    </section> 
-    
+    </section>
+
     @include('layouts.include.client.banner-carousel')
     @include('layouts.include.client.notify-product')
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        calculateTotal();
+    });
+
+    function calculateTotal() {
+        let itemTotalPrices = document.querySelectorAll(".item-total-price");
+        let subtotal = 0;
+
+        itemTotalPrices.forEach(function (item) {
+            let price = parseInt(item.textContent.replace('đ', '').replace(/\./g, ''));
+            subtotal += price;
+        });
+
+        let total = subtotal;
+
+        document.getElementById("subtotal").textContent = subtotal.toLocaleString('vi-VN') + "đ";
+        document.getElementById("total").textContent = total.toLocaleString('vi-VN') + "đ";
+    }
+</script>
