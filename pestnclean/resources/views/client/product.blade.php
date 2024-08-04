@@ -60,8 +60,15 @@
 
             <div class="div-cell">
                 <div class="div-cell-display div-contact-cell">
-                    <input type="text" name="" id="" placeholder="Tìm Kiếm sản phẩm"
-                        class="product-input"><i class="i-color fa-solid fa-magnifying-glass"></i>
+                    <form action="{{ route('search') }}" method="GET">
+                        <input type="text" name="keyword" id="" placeholder="Tìm Kiếm sản phẩm" class="product-input">
+                        {{-- <button type="submit">Search</button> --}}
+                        {{-- <input type="text" name="" id="" placeholder="Tìm Kiếm sản phẩm"
+                            class="product-input"> --}}
+                        </form>
+                            <i class="i-color fa-solid fa-magnifying-glass"></i>
+
+
                     <p class="product-text-p">Sắp xếp theo:</p>
                     <select id="cars" name="cars" class="p-select">
                         <option value="volvo">Phù hợp nhất</option>
@@ -236,16 +243,16 @@
 
                 <div class="grid div-gird">
 
-                    {{-- @foreach($products as $product)
+                    @foreach($products as $product)
                     <div class="border-div rounded-lg  bg-card">
                         <a href="{{ route('shop.details', ['id' => $product->id]) }}">
                             <img aria-hidden="true" alt=""
-                                src="{{ asset('uploads/products/' . $product->main_image) }}" style="height: 50px; object-fit: cover;" />
+                                src="{{ asset('uploads/products/' . $product->main_image) }}" style="width: 200px; height: 200px" />
                             <div class="mt-2">
-                                <span class="text-muted1">{{ $product->category_id }}</span>
+                                <span class="text-muted1">{{ $product->category->title }}</span>
                                 <h2 class="font-bold">{{ $product->name }}</h2>
-                                <p class="text-muted color-top">{{ $product->price }} ₫</p>
-                                <p class="text-color ">{{ $product->price }} ₫</p>
+                                <p class="text-muted color-top">{{ number_format($product->price, 0, ',', '.') }} ₫</p>
+                                <p class="text-color ">{{ number_format($product->price, 0, ',', '.') }} ₫</p>
                                 <div class="text-div">
                                     <span class="text-sp">Hè Sang</span>
                                     <span class="text-smtn">Mới</span>
@@ -254,66 +261,12 @@
                         </a>
                         <button class="bg-secondary rounded">Giỏ hàng</button>
                     </div>
-                    @endforeach --}}
+                    @endforeach
 
 
-
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted1">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
-
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted1">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
-
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted1">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
                 </div>
 
-                <div class="grid div-gird-top">
+                {{-- <div class="grid div-gird-top">
                     <div class="border-div rounded-lg  bg-card">
                         <a href="#">
                             <img aria-hidden="true" alt=""
@@ -385,84 +338,11 @@
                         </a>
                         <button class="bg-secondary rounded">Giỏ hàng</button>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="grid div-gird-top">
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
 
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
-
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product/product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
-
-                    <div class="border-div rounded-lg  bg-card">
-                        <a href="#">
-                            <img aria-hidden="true" alt=""
-                                src="/FePestsClean/resources/images/product//product-img-horz.png" />
-                            <div class="mt-2">
-                                <span class="text-muted">Dung dịch hóa chất</span>
-                                <h2 class="font-bold">Hóa chất 3M™ Stainless Steel Cleaner & Polish 621...</h2>
-                                <p class="text-muted color-top">100.000 ₫ - 150.000 ₫</p>
-                                <p class="text-color ">100.000 ₫ - 150.000 ₫</p>
-                                <div class="text-div">
-                                    <span class="text-sp">Hè Sang</span>
-                                    <span class="text-smtn">Mới</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="bg-secondary rounded">Giỏ hàng</button>
-                    </div>
-                </div>
-
-                <div class="div-link">
-                    <span class="span-link link-b"><a href="#">
+                {{-- <div class="div-link"> --}}
+                    {{-- <span class="span-link link-b"><a href="#">
                             << /a></span>
                     <span class="span-link "><a href="#">1</a></span>
                     <span class="span-link "><a href="#">2</a></span>
@@ -470,8 +350,9 @@
                     <span class="span-link "><a href="#">4</a></span>
                     <span class="span-link "><a href="#">...</a></span>
                     <span class="span-link "><a href="#">10</a></span>
-                    <span class="span-link link-b"><a href="#">></a></span>
-                </div>
+                    <span class="span-link link-b"><a href="#">></a></span> --}}
+                    {{ $products->links('vendor.pagination.custom') }}
+                {{-- </div> --}}
             </div>
         </div>
         </div>
