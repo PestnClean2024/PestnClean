@@ -95,6 +95,8 @@ Route::middleware(['role:superadmin,admin'])->group(function () {
     Route::resource('articles', ArticlesController::class);
     //Quản lý tài khoản khách hàng
     Route::resource('customers', CustomerController::class);
+    Route::PATCH('/customers/lock/{id}', [CustomerController::class, 'lock'])->name('customers.lock');
+    Route::PATCH('/customers/unlock/{id}', [CustomerController::class, 'unlock'])->name('customers.unlock');
     //Quản lý đơn hàng
     Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice');
     Route::get('invoice-detail/{id}', [InvoiceController::class, 'detail'])->name('invoice-detail');

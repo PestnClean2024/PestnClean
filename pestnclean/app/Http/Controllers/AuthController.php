@@ -93,7 +93,15 @@ class AuthController extends Controller
             ], 422);
         }
 
+
         $user = auth()->user();
+        if ($user->status == 0) {
+            return  response()->json([
+                'errors' => [
+                    'login_id' => ['Tài khoản của bạn đã bị khóa.']
+                ]
+            ], 422);
+        }
 
         // Lưu thông tin người dùng vào session
         session(['user' => $user]);
