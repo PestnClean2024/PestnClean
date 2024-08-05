@@ -17,23 +17,26 @@
             </ul>
         </div>
     @endif
-    {{-- Kết thúc thông báo lỗi --}}
+    {{-- Thông báo thành công --}}
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- /.card-header -->
     <!-- form start -->
     <table class="table table-striped" id="myTable">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Main Image</th>
-                <th scope="col">Description</th>
-                <th scope="col">Price</th>
-                <th scope="col">Category</th>
-                <th scope="col">Sizes</th>
-                <th scope="col">Created Date</th>
-                <th scope="col">Updated Date</th>
-                <th scope="col">Status</th>
-                <th scope="col">Manage</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Ảnh chính</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Danh mục</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Ngày cập nhật</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Quản lý</th>
             </tr>
         </thead>
         <tbody>
@@ -41,29 +44,41 @@
                 <tr>
                     <th scope="row">{{$key + 1}}</th>
                     <td>{{$product->name}}</td>
-                    <td> 
+                    <td>
                         <img width="80px" height="80px" src="{{asset('uploads/products/'.$product->main_image)}}">
                     </td>
-                    <td>{!!$product->description!!}</td>
-                    <td>{{number_format($product->price,0,', ','. ') }}VND</td>
+                    <td>{{number_format($product->price,0,', ','. ') }} VND</td>
                     <td>{{ $product->category->title }}</td>
-                    <td>
-                        @foreach($product->sizes as $size)
-                            <div>{{ $size->size }}: {{ $size->quantity }}</div>
-                        @endforeach
-                    </td>
                     <td>{{$product->created_at}}</td>
                     <td>{{$product->updated_at}}</td>
                     <td>
-                        @if($product->status == 1)
-                            <span class="text text-success">Active</span>
-                        @else
-                            <span class="text text-error">Inactive</span>
+                        @if(auth()->user()->role === 'superadmin')
+                        <form action="{{route('products.accept',[$product->id])}}" method="POST">
+                            @csrf
+                            <input type="submit" class="btn btn-success" value="Accept">
+                        </form>
+                        <form action="{{route('products.reject',[$product->id])}}" method="POST">
+                            @csrf
+                            <input type="submit" class="btn btn-warning" value="Reject">
+                        </form>
+                        @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'executive')
+                            @if($product->status == '1')
+                                <span class="text text-success">Đã duyệt</span>
+                            @elseif($product->status == '2')
+                                <span class="text text-danger">Bị từ chối</span>
+                            @else
+                                <span class="text text-primary">Chưa duyệt</span>
+                            @endif
                         @endif
                     </td>
                     <td>
                         <a class="btn btn-warning" href="{{ route('products.edit', [$product->id]) }}">Sửa</a>
-                        <form onsubmit="return confirm('You definitely want to delete?');" action="{{ route('products.destroy', [$product->id]) }}" method="POST" style="display:inline;">
+
+                        <!-- Chỉ Superadmin mới thấy các nút duyệt và từ chối -->
+                        
+
+                        <!-- Form Xóa -->
+                        <form onsubmit="return confirm('Bạn chắc chắn muốn xóa sản phẩm này?');" action="{{ route('products.destroy', [$product->id]) }}" method="POST" style="display:inline;">
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger" type="submit" value="Xóa">

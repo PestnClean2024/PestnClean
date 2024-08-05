@@ -29,10 +29,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service') }}">Dịch vụ (test)</a>
+                    <a class="nav-link" href="#">Dịch vụ (test)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service-cleaning') }}">Dịch vụ cleaning (test)</a>
+                    <a class="nav-link" href="#">Dịch vụ cleaning (test)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sản phẩm</a>
@@ -50,8 +50,8 @@
             {{-- {{dd(session('user'))}} --}}
             <p>Xin chào, {{ session('user')->fullname }}!</p>
             <p>Vai trò: {{ session('user')->role }}</p>
-            <a href="{{ route('user.index') }}">Xem thông tin</a>
-            <a href="{{ route('order') }}">Giỏ hàng</a>
+            <a href="#">Xem thông tin</a>
+            <a href="#">Giỏ hàng</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit">Logout</button>

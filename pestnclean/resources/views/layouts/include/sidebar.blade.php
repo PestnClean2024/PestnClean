@@ -13,7 +13,7 @@
           <img src="{{asset('backend/imgs/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Phạm Đức Mạnh</a>
+          <a href="#" class="d-block">{{Auth::user()->fullname}} </a>
           {{-- {{Auth::user()->name}} --}}
         </div>
       </div>
@@ -35,7 +35,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-<<<<<<< HEAD
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -173,7 +172,6 @@
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-=======
                 @if (auth()->user()->role === 'executive')
                     <li class="nav-item">
                         <a href="{{ route('categoriesArticles.index') }}" class="nav-link">
@@ -387,7 +385,7 @@
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
+
     </div>
     <!-- /.sidebar -->
   </aside>

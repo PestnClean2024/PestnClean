@@ -13,6 +13,7 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 
@@ -60,7 +61,11 @@ Route::resource('articles', ArticlesController::class);
 Route::resource('customers', CustomerController::class);
 Route::patch('customers/{customer}/lock', [CustomerController::class, 'lock'])->name('customers.lock');
 Route::patch('customers/{customer}/unlock', [CustomerController::class, 'unlock'])->name('customers.unlock');
+//Duyệt sản phẩm
 
+
+Route::post('/products/{id}/accept', [ProductController::class, 'accept'])->name('products.accept');
+Route::post('/products/{id}/reject', [ProductController::class, 'reject'])->name('products.reject');
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

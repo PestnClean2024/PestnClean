@@ -7,15 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Size;
 use App\Models\ProductImage;
-<<<<<<< HEAD
-use App\Utils\AccessLogger;
-=======
+use app\Utils\AcessLogger;
+use App\Http\Controllers\UserController;
 
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
+
 class ProductController extends Controller
 {
+    public function __contruct(){
+        $this->middleware('auth');
+        $this->middleware('role:supperadmin')->only(['destroy']);
+    }
     public function index()
     {
         $products = Product::with('sizes', 'images')->get();
@@ -36,6 +40,7 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
+        $user = auth()->user();
         // Validate the request
         $data = $request->validate([
             'name' => 'required',
@@ -56,7 +61,7 @@ class ProductController extends Controller
             'description' => $data['description'],
             'price' => $data['price'],
             'content' => $data['content'],
-            'status' => $data['status'],
+            'status' => $user->role === 'superadmin' ? 'approve' : 'pending',
             'category_id' => $data['category_id'],
         ]);
 
@@ -94,20 +99,18 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-<<<<<<< HEAD
+
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo sản phẩm {$product->id} thành công");
-=======
         //Log thông báo hành động
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã thêm sản phẩm thành công");
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
         return redirect()->route('products.index');
     }
 
-
+    
     public function edit(string $id)
     {
         $product = Product::findOrFail($id);
@@ -118,8 +121,37 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product', 'categories', 'sizes', 'productImages'));
     }
 
+    public function updatePrice(Request $request, $id)
+{
+    $user = auth()->user();
+
+    // Đảm bảo chỉ Superadmin mới có thể cập nhật giá
+    if ($user->role !== 'superadmin') {
+        return redirect()->route('products.index')->withErrors('Bạn không có quyền cập nhật giá sản phẩm.');
+    }
+
+    // Xác thực dữ liệu từ request
+    $data = $request->validate([
+        'price' => 'required|numeric',
+    ]);
+
+    // Tìm sản phẩm
+    $product = Product::findOrFail($id);
+
+    // Cập nhật giá
+    $product->price = $data['price'];
+    $product->status = 'pending'; // Đặt trạng thái là chờ duyệt nếu cần
+    $product->save();
+
+    // Ghi log hành động
+    AccessLogger::log("{$user->fullname}-{$user->role} đã cập nhật giá sản phẩm {$product->id} thành công");
+    return redirect()->route('products.index')->with('success', 'Giá sản phẩm đã được cập nhật.');
+}
+
     public function update(Request $request, $id)
     {
+        $user = auth()->user();
+        
         // Validate the request
         $data = $request->validate([
             'name' => 'required',
@@ -187,23 +219,26 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
-<<<<<<< HEAD
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã cập nhật sản phẩm {$product->id} thành công");
-=======
+
         //Log thông báo hành động
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã sửa sản phẩm {$product->id} thành công");
 
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
+
         return redirect()->route('products.index');
     }
 
     public function destroy($id)
     {
         // Find the product
+        $user = auth()->user();
+        if($user->role !== 'superadmin'){
+            return redirect()->route('products.index')->withErrors('Bạn không có quyền xóa sản phẩm');
+        }
         $product = Product::findOrFail($id);
 
         // Delete sizes related to the product
@@ -229,14 +264,49 @@ class ProductController extends Controller
 
         // Delete the product
         $product->delete();
-<<<<<<< HEAD
-=======
+
 
         //Log thông báo hành động
->>>>>>> 6a55acc938acde8b8a2cb391e335c9c3f7362451
+
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
+
+    //Duyệt sản phẩm
+    
+
+    //Từ chối sản phẩm
+    public function accept($id)
+    {
+        // Kiểm tra quyền truy cập
+        // Tìm sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        // Cập nhật trạng thái sản phẩm thành 'approved'
+        $product->status = 1;
+        $product->save();
+
+        // Chuyển hướng và thông báo thành công
+        return redirect()->route('products.index')->with('success', 'Sản phẩm đã được chấp nhận.');
+    }
+
+    // Phương thức để từ chối sản phẩm
+    public function reject($id)
+    {
+        // Kiểm tra quyền truy cập
+       
+
+        // Tìm sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        // Cập nhật trạng thái sản phẩm thành 'rejected'
+        $product->status = 2;
+        $product->save();
+
+        // Chuyển hướng và thông báo thành công
+        return redirect()->route('products.index')->with('error', 'Sản phẩm đã bị từ chối.');
+    }
+
 }
