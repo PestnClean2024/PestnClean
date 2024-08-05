@@ -10,10 +10,13 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Size;
 use App\Models\ProductImage;
+<<<<<<< HEAD
 use app\Utils\AcessLogger;
 use App\Http\Controllers\UserController;
 
 
+=======
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
 class ProductController extends Controller
 {
     public function __contruct(){
@@ -99,6 +102,7 @@ class ProductController extends Controller
 
         // Save product after updating image paths
         $product->save();
+<<<<<<< HEAD
 
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
@@ -107,6 +111,11 @@ class ProductController extends Controller
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã thêm sản phẩm thành công");
+=======
+        $user = auth()->user()->fullname;
+        $user_role = auth()->user()->role;
+        AccessLogger::log("{$user}-{$user_role} đã tạo sản phẩm {$product->id} thành công");
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
         return redirect()->route('products.index');
     }
 
@@ -222,6 +231,7 @@ class ProductController extends Controller
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã cập nhật sản phẩm {$product->id} thành công");
+<<<<<<< HEAD
 
         //Log thông báo hành động
         $user = auth()->user()->fullname;
@@ -229,6 +239,8 @@ class ProductController extends Controller
         AccessLogger::log("{$user}-{$user_role} đã sửa sản phẩm {$product->id} thành công");
 
 
+=======
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
         return redirect()->route('products.index');
     }
 
@@ -264,10 +276,13 @@ class ProductController extends Controller
 
         // Delete the product
         $product->delete();
+<<<<<<< HEAD
 
 
         //Log thông báo hành động
 
+=======
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã xóa sản phẩm {$product->id} thành công");

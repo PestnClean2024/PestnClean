@@ -5,6 +5,7 @@
 @endpush
 
 @section('content')
+
     <section class="container-fluid p-0">
         <div class="service-title-container">
             <h1>Dịch vụ của chúng tôi</h1>
@@ -70,29 +71,7 @@
             </div>
         </div>
     </section>
-
-    <section class="container-fluid p-0">
-        <div id="carouselServiceBanner" class="carousel slide" style="height: 700px; margin-bottom: 80px;">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselServiceBanner" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="carousel-service-img"
-                        src="{{ asset('fontend/images/Service/service-banner.png') }}" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceBanner"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceBanner"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section>
+    @include('layouts.include.client.banner-carousel')
+    @include('layouts.include.client.notify-service')
 @endsection
+

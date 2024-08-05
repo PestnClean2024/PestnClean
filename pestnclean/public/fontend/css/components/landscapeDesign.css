@@ -1,0 +1,266 @@
+/* Header */
+.landscape-design-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 399.982px;
+    flex-direction: column;
+    background-color: var(--Green-500);
+}
+
+.landscape-design-header .headline {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.landscape-design-header .headline .title {
+    font-family: "Noto Serif";
+    width: max-content;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 16.06%, #FFF 86.9%, rgba(255, 255, 255, 0.00) 106.25%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FFF;;
+}
+
+.landscape-design-header .headline .btn-header {
+    padding: 8px 16px;
+    gap: 8px;
+    border-radius: 16px;
+    background: var(--Green-500);
+    color: #FFF;
+    font-size: 32px;
+}
+
+.landscape-design-header .headline .btn-header:hover {
+    padding: 8px 16px;
+    border: 1px solid #fff;
+}
+
+/* Abouts */
+.landscape-design-abouts .content {
+    padding: 0px 80px;
+    margin: 80px 0px;
+}
+
+.landscape-design-abouts .content .row {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landscape-design-abouts .content .title {
+    color: var(--Green-500);
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.landscape-design-abouts .content .description {
+    color: var(--Neutral-500, #868E96);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: justify;
+    margin-top: 32px;
+}
+
+.landscape-design-abouts .content .video {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    border-radius: 10px;
+    background: var(--Blue-500, #005CA9);
+    width: 100%;
+    height: 344px;
+}
+
+.landscape-design-abouts .content .video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Process */
+.landscape-design-process {
+    padding: 0px 80px;
+}
+
+.landscape-design-process .headline .title {
+    color: var(--Green-500);
+    text-align: center;
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+/* Our services */
+.landscape-design-our-services {
+    padding: 40px 80px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.landscape-design-our-services .headline .title {
+    color: var(--Green-500, #21A612);
+    text-align: center;
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+
+.landscape-design-our-services .content .card-item img {
+    display: flex;
+    width: 391px;
+    height: 391px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.landscape-design-our-services .content .row {
+    justify-content: space-between;
+}
+
+.landscape-design-our-services .content .row::before {
+    content: "";
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    width: 100%;
+    height: 510px;
+    background: var(--Green-500, #21A612);
+    z-index: -1;
+}
+
+
+.landscape-design-our-services .content .card-item {
+    display: flex;
+    width: 433.64px;
+    padding-top: 24px;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: var(--Number, 16px);
+    border: var(--Number-3, 1px) solid var(--Neutral-200, #C8CCD0);
+    background: var(--Color, #FFF);
+}
+
+.landscape-design-our-services .content .card-item .wrapper {
+    display: flex;
+    padding: 32px 32px 0px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.landscape-design-our-services .content .card-item .title {
+    color: var(--Green-500, #21A612);
+    font-family: "Noto Serif";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.landscape-design-our-services .content .card-item .description {
+    color: var(--Blue-Gray-900, #0F172A);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.landscape-design-our-services .content .card-item .card-footer {
+    display: flex;
+    padding: 16px 32px;
+    align-items: flex-end;
+    gap: 16px;
+    align-self: stretch;
+}
+
+
+.landscape-design-our-services .content .card-item .card-footer a {
+    display: flex;
+    align-items: center;
+    color: var(--Neutral-500, #868E96);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    padding: 8px 16px;
+    justify-content: center;
+    gap: 8px;
+}
+
+.landscape-design-our-services .content .card-item .card-footer img {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+}
+
+/* Construction */
+.landscape-design-construction {
+    padding: 40px 80px;
+    margin-bottom: 80px;
+}
+
+.landscape-design-construction .headline .title {
+    color: var(--Green-500, #21A612);
+    text-align: center;
+    font-family: "Noto Serif";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: uppercase;
+}
+
+.landscape-design-construction .headline .description {
+    color: var(--Neutral-500, #868E96);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 24px 0px;
+}
+
+.landscape-design-construction .construction-steps {
+    margin: 53px 0px;
+}
+
+.landscape-design-construction .construction-steps .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 80px;
+}
+
+.landscape-design-construction .construction-steps .row:nth-child(2) {
+    margin-top: -32px;
+}

@@ -16,7 +16,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title" style="font-size: 48px;">DỊCH VỤ VỆ SINH PESTNCLEAN</h1>
+                    <h1 class="title">DỊCH VỤ VỆ SINH PESTNCLEAN</h1>
                     <p class="description">
                         <span class="text-underline">PestnClean</span> là công ty dịch vụ vệ sinh chuyên nghiệp, cung cấp
                         các dịch vụ vệ sinh công nghiệp và vệ sinh dân dụng chất lượng cao, được thiết kế linh hoạt nhằm đáp
@@ -36,9 +36,9 @@
 
     <section class="service-cleaning-services">
         <div class="headline">
-            <h1 class="title" style="font-size: 56px;">CÁC DỊCH VỤ VỆ SINH CỦA PESTNCLEAN</h1>
-            <p class="subtitle" style="font-size: 24px;">Các dịch vụ vệ sinh chuyên nghiệp của PestnClean, đáp ứng tối ưu
-                yêu cầu của khách hàng trong nhiều lĩnh vực, nâng cao chất lượng môi trường sống và làm việc</p>
+            <h1 class="title">CÁC DỊCH VỤ VỆ SINH CỦA PESTNCLEAN</h1>
+            <p class="subtitle">Các dịch vụ vệ sinh chuyên nghiệp của PestnClean, đáp ứng tối ưu yêu cầu của khách hàng
+                trong nhiều lĩnh vực, nâng cao chất lượng môi trường sống và làm việc</p>
         </div>
         <div class="content">
             <div class="row">
@@ -149,8 +149,6 @@
             </div>
         </div>
     </section>
-
-    <section class="service-cleaning-banner">
-        <img src="{{ asset('fontend/images/serviceCleaning/services-banner.png') }}" alt="#" class="img-fluid">
-    </section>
+    @include('layouts.include.client.banner-carousel')
+    @include('layouts.include.client.notify-service')
 @endsection

@@ -59,7 +59,7 @@ class AuthController extends Controller
                 break;
             case 'superadmin':
                 // Ghi lại hoạt động
-                AccessLogger::log('Supser đã đăng nhập');
+                AccessLogger::log('SuperAdmin đã đăng nhập');
                 $redirectUrl = route('dashboard');
                 break;
             case 'admin':
@@ -68,7 +68,7 @@ class AuthController extends Controller
                 break;
             case 'executive':
                 AccessLogger::log("Excutive đã đăng nhập");
-                $redirectUrl = route('categoriesArticles.index');
+                $redirectUrl = route('executive.categoriesArticles.index');
                 break;
             default:
                 // Redirect đến trang trước đó hoặc trang lỗi
@@ -93,7 +93,15 @@ class AuthController extends Controller
             ], 422);
         }
 
+
         $user = auth()->user();
+        if ($user->status == 0) {
+            return  response()->json([
+                'errors' => [
+                    'login_id' => ['Tài khoản của bạn đã bị khóa.']
+                ]
+            ], 422);
+        }
 
         // Lưu thông tin người dùng vào session
         session(['user' => $user]);

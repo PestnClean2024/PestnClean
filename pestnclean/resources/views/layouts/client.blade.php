@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('fontend/plugins/fontawesome/css/all.min.css') }}">
 
     <script src="{{ asset('fontend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('fontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('fontend/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"></script>
 
     <link rel="stylesheet" href="{{ asset('fontend/plugins/bootstrap/css/bootstrap.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('fontend/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/components/header.css') }}">
@@ -33,11 +36,12 @@
     @include('layouts.include.client.footer')
 
     @include('layouts.include.client.model')
-    
-    <script src="{{ asset('fontend/js/jquery.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('fontend/js/jquery.min.js') }}"></script>
     <script src="{{ asset('fontend/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="{{ asset('fontend/js/components/details.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"></script> 
+    <script src="{{ asset('fontend/js/components/details.js') }}"></script> --}}
 </body>
 
 </html>

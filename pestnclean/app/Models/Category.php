@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     public static function recursive($categories, $parents=0, $level=1, &$listCategory){
         if(count($categories) > 0){
             foreach($categories as $key => $value){
                 if($value->category_parent == $parents){
-                    $value ->level = $level;    
+                    $value ->level = $level;
 
                     $listCategory[] = $value;
                     unset($categories[$key]);
@@ -23,5 +27,5 @@ class Category extends Model
             }
         }
     }
-    
+
 }

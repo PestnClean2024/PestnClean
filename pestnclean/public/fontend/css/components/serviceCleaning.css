@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1512px;
+    width: 100%;
     height: 399.982px;
     flex-direction: column;
     background-color: var(--Blue-500, #005CA9);
@@ -127,7 +127,7 @@
 .service-cleaning-services .content .row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .service-cleaning-services .content .card-img {
@@ -171,10 +171,16 @@
 
 .service-cleaning-services .content .img1 {
     background-image: url(../../images/serviceCleaning/ve-sinh-cong-nghiep.png);
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-services .content .img2 {
     background-image: url(../../images/serviceCleaning/ve-sinh-nha-o.png);
+    transition: transform 0.3s ease;
+}
+
+.service-cleaning-services .content .card-img:hover {
+    transform: scale(1.05);
 }
 
 .service-cleaning-services .content .card-img .service-name {
@@ -226,7 +232,7 @@
 }
 
 .service-cleaning-process .headline .title {
-    color: var(--Blue-500, #005CA9);
+    color: var(--Blue-500, #005CA9) !important;
     text-align: center;
     font-family: "Noto Serif";
     font-size: 64px;
@@ -260,49 +266,62 @@
     margin-bottom: 40px;
 }
 
+.service-cleaning-special .content .row .card-item:hover {
+    transform: scale(1.05);
+}
+
 .service-cleaning-special .content .row:nth-child(1) .card-item:nth-child(1) {
     background-image: url(../../images/serviceCleaning/card-background-1.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(1) .card-item:nth-child(2) {
     background-image: url(../../images/serviceCleaning/card-background-2.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(1) .card-item:nth-child(3) {
     background-image: url(../../images/serviceCleaning/card-background-3.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(2) .card-item:nth-child(1) {
     background-image: url(../../images/serviceCleaning/card-background-4.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(2) .card-item:nth-child(2) {
     background-image: url(../../images/serviceCleaning/card-background-5.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(2) .card-item:nth-child(3) {
     background-image: url(../../images/serviceCleaning/card-background-6.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(3) .card-item:nth-child(1) {
     background-image: url(../../images/serviceCleaning/card-background-7.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(3) .card-item:nth-child(2) {
     background-image: url(../../images/serviceCleaning/card-background-8.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .row:nth-child(3) .card-item:nth-child(3) {
     background-image: url(../../images/serviceCleaning/card-background-9.png);
     background-repeat: repeat;
+    transition: transform 0.3s ease;
 }
 
 .service-cleaning-special .content .card-item::before {
@@ -312,8 +331,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--Color-6, rgba(36, 36, 36, 0.85));
-    opacity: 0.85;
+    background: var(--Color-6, rgba(36, 36, 36, 0.45));
+    opacity: 0.45;
     border-radius: 15px;
 }
 
@@ -334,8 +353,11 @@
 
 .service-cleaning-special .content .card-item .wrapper {
     z-index: 1;
+    position: absolute;
+    padding: 24px;
+    left: 0;
+    bottom: 0;
 }
-
 
 .service-cleaning-special .content .card-item .wrapper .title {
     height: 120px;

@@ -24,7 +24,7 @@ class CartController extends Controller
         return $item;
     });
 
-    return view('cart', compact('cartItems'));
+    return view('client.product-cart', compact('cartItems'));
 }
 
 

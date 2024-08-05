@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use Illuminate\Pagination\Paginator;
+use App\Models\Product;
 
 class ShopController extends Controller
 {
@@ -13,12 +14,13 @@ class ShopController extends Controller
         $categoryId = $request->query('category_id');
 
         if ($categoryId) {
-            $products = DB::table('products')->where('category_id', $categoryId)->paginate(2);
+            $products = Product::with('category')->where('category_id', $categoryId)->paginate(4);
         } else {
-            $products = DB::table('products')->paginate(2);
+            $products = Product::with('category')->paginate(4);
         }
         $categories = DB::table('categories')->where('status', 'TRUE')->get();
-        return view('products.index', ['products' => $products, 'categories' => $categories]);
+        return view('client.product', ['products' => $products, 'categories' => $categories]);
+
     }
 
     public function shopDetails($product_id)

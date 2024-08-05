@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Utils\AccessLogger;
 use Illuminate\Http\Request;
 use App\Models\Category;
+<<<<<<< HEAD
 use app\Utils\AcessLogger;
+=======
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
 class CategoriesController extends Controller
 {
     /**
@@ -71,12 +74,15 @@ class CategoriesController extends Controller
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã tạo dịch vụ {$category->id} thành công");
         return redirect()->route('categories.index');
+<<<<<<< HEAD
 
         //Log thông báo hành động
         $user = auth()->user()->fullname;
         $user_role = auth()->user()->role;
         AccessLogger::log("{$user}-{$user_role} đã thêm danh mục thành công");
         return redirect()->back();
+=======
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
     }
 
     /**
@@ -143,6 +149,10 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccc90b758f8a1f086d0a11196f3a10d072da866b
 
 
     /**
@@ -161,6 +171,6 @@ class CategoriesController extends Controller
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Danh mục đã được xóa thành công.');
-    
+
     }
 }
